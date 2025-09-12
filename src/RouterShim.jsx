@@ -1,11 +1,22 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import Login from './Login';
+import Accomplishments from './pages/Accomplishments';
 
 function Home() {
   const navigate = useNavigate();
+  // Scroll to section by id
+ // Scroll to section by id, with offset for sticky nav
+const scrollToSection = (id) => {
+  const el = document.getElementById(id);
+  if (el) {
+    const yOffset = -80; // Offset for sticky nav height
+    const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  }
+};
   return (
-    <div style={{minHeight: '100vh', background: '#0a0d12'}}>
+    <div style={{ minHeight: '100vh', background: '#0a0d12' }}>
       {/* Nav Bar */}
       <nav
         style={{
@@ -14,8 +25,8 @@ function Home() {
           background: '#181c1f',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'flex-end',
-          padding: '0.5rem 0.7rem',
+          justifyContent: 'space-between',
+          padding: '0.5rem 1.2rem',
           boxSizing: 'border-box',
           boxShadow: '0 2px 12px rgba(20,255,233,0.07)',
           position: 'sticky',
@@ -24,55 +35,197 @@ function Home() {
           overflow: 'hidden',
         }}
       >
-        <button
-          style={{
-            background: 'none',
-            color: '#b2fefa',
-            fontWeight: 700,
-            fontSize: '1rem',
-            border: 'none',
-            cursor: 'pointer',
-            textShadow: '0 1px 8px #0ea5e9',
-            padding: '0.3rem 0.7rem',
-            borderRadius: 6,
-            whiteSpace: 'nowrap',
-            maxWidth: '100vw',
-            overflow: 'hidden',
-            textOverflow: 'ellipsis',
-          }}
-          onClick={() => navigate('/login')}
-        >
-          Client Login
-        </button>
+        <img src="/logo.png" alt="iSawyer Logo" style={{ height: 48, borderRadius: 8, background: 'transparent', marginRight: 16 }} />
+        <div style={{ display: 'flex', gap: 8 }}>
+          {[
+            { label: 'Services', id: 'services' },
+            { label: 'Industries', id: 'industries' },
+            { label: 'Accomplishments', id: 'accomplishments', route: '/accomplishments' },
+            { label: 'Insights', id: 'insights' },
+            { label: 'About', id: 'about' },
+            { label: 'Contact', id: 'contact' },
+          ].map((item) => (
+            <button
+              key={item.id}
+              style={{
+                background: 'none',
+                color: '#b2fefa',
+                fontWeight: 700,
+                fontSize: '1rem',
+                border: 'none',
+                cursor: 'pointer',
+                textShadow: '0 1px 8px #0ea5e9',
+                padding: '0.3rem 0.7rem',
+                borderRadius: 6,
+                whiteSpace: 'nowrap',
+                transition: 'background 0.2s',
+              }}
+              onClick={() => {
+                if (item.route) {
+                  navigate(item.route);
+                } else {
+                  scrollToSection(item.id);
+                }
+              }}
+            >
+              {item.label}
+            </button>
+          ))}
+          <button
+            style={{
+              background: 'none',
+              color: '#14ffe9',
+              fontWeight: 700,
+              fontSize: '1rem',
+              border: '1px solid #14ffe9',
+              cursor: 'pointer',
+              textShadow: '0 1px 8px #0ea5e9',
+              padding: '0.3rem 0.7rem',
+              borderRadius: 6,
+              marginLeft: 8,
+              whiteSpace: 'nowrap',
+              transition: 'background 0.2s',
+            }}
+            onClick={() => navigate('/login')}
+          >
+            Client Login
+          </button>
+        </div>
       </nav>
       {/* Main Content */}
-      <main style={{maxWidth: 1100, margin: '0 auto', padding: '3.5rem 1rem 2rem 1rem', textAlign: 'center'}}>
-  <img src="/logo.png" alt="iSawyer Logo" style={{height: 'min(180px, 32vw)', maxWidth: '90vw', borderRadius: 14, background: 'transparent', display: 'block', margin: '0 auto 2rem auto'}} />
-        <h1 style={{fontSize: '1.3rem', color: '#14ffe9', fontWeight: 700, marginBottom: 24, marginTop: 0, lineHeight: 1.1, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'}}>
-          I saw your solutions you never imagined possible.
-        </h1>
-        <div style={{fontSize: '1.6rem', color: '#fff', fontWeight: 700, marginBottom: 18}}>
-          Efficiency Experts + Automated Data = Maximized Profitability
-        </div>
-        <div style={{fontSize: '1.15rem', color: '#b2fefa', marginBottom: 48}}>
-          Helping businesses unlock their full potential through smarter systems and data-driven automation.
-        </div>
-        <section style={{marginTop: '2.5rem', textAlign: 'center'}}>
-          <h2 style={{color: '#14ffe9', fontSize: '2.2rem', marginBottom: 18}}>Who We Are</h2>
-          <p style={{color: '#f8fafc', fontSize: '1.1rem', maxWidth: 800, margin: '0 auto'}}>
-            At <b>iSawyerSolutions</b>, we specialize in building data-driven systems and automation workflows that turn inefficiency into opportunity. Our consulting team streamlines clients' operations, integrates clients' platforms, and creates centralized databases that power decision-making. From automation strategy to technical implementation, we help organizations reduce busywork, accelerate growth, and increase profitability.
+      <main style={{ maxWidth: 1100, margin: '0 auto', padding: '3.5rem 1rem 2rem 1rem', textAlign: 'center' }}>
+        {/* Hero Section */}
+        <section id="hero" style={{ marginBottom: 64 }}>
+          <img src="/logo.png" alt="iSawyer Logo" style={{ height: 'min(180px, 32vw)', maxWidth: '90vw', borderRadius: 14, background: 'transparent', display: 'block', margin: '0 auto 2rem auto' }} />
+          <h1 style={{ fontSize: '2.1rem', color: '#14ffe9', fontWeight: 700, marginBottom: 18, marginTop: 0, lineHeight: 1.1 }}>
+            I saw your solutions you never imagined possible.
+          </h1>
+          <div style={{ fontSize: '1.6rem', color: '#fff', fontWeight: 700, marginBottom: 18 }}>
+            Efficiency Experts + Automated Data = Maximized Profitability
+          </div>
+          <div style={{ fontSize: '1.15rem', color: '#b2fefa', marginBottom: 32 }}>
+            Helping businesses unlock their full potential through smarter systems and data-driven automation.
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: 16, marginBottom: 12 }}>
+            <button style={{ background: 'linear-gradient(90deg,#14ffe9,#0ea5e9)', color: '#181c1f', fontWeight: 700, fontSize: '1.1rem', border: 'none', borderRadius: 8, padding: '0.7rem 1.5rem', cursor: 'pointer', boxShadow: '0 2px 8px #14ffe933' }}>
+              Book a consultation
+            </button>
+            <button style={{ background: 'none', color: '#14ffe9', fontWeight: 700, fontSize: '1.1rem', border: '1.5px solid #14ffe9', borderRadius: 8, padding: '0.7rem 1.5rem', cursor: 'pointer', marginLeft: 8 }} onClick={() => navigate('/accomplishments')}>
+              See accomplishments & case studies
+            </button>
+          </div>
+        </section>
+        {/* Services Section */}
+        <section id="services" style={{ margin: '64px 0 48px 0', textAlign: 'center' }}>
+          <h2 style={{ color: '#14ffe9', fontSize: '2rem', marginBottom: 18 }}>Our Services</h2>
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 24 }}>
+            {/* Service Cards */}
+            <div style={serviceCardStyle}><b>Automation Ops</b><br />Remove hours of manual work with resilient, monitored automations.</div>
+            <div style={serviceCardStyle}><b>Systems Integration</b><br />Make apps that organizations use talk using robust APIs and battle-tested programs.</div>
+            <div style={serviceCardStyle}><b>Data & Analytics</b><br />Consolidate scattered spreadsheets into a trustworthy analytics layer.</div>
+            <div style={serviceCardStyle}><b>AI Readiness & Governance</b><br />Adopt AI with guardrails (data lineage, role-based access, change control).</div>
+          </div>
+        </section>
+        {/* Industries Section */}
+        <section id="industries" style={{ margin: '64px 0 48px 0', textAlign: 'center' }}>
+          <h2 style={{ color: '#14ffe9', fontSize: '2rem', marginBottom: 18 }}>Industries</h2>
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 24 }}>
+            <div style={industryCardStyle}><b>Construction & Building Services</b><br />Data hygiene, job cost, efficiency asset/field data; time approvals; safety/compliance logs.</div>
+            <div style={industryCardStyle}><b>Events & Live Entertainment</b><br />Suite/box lead capture, allocation dashboards, ticketing/platform integrations, anti-fraud email rules, sponsor reporting.</div>
+          </div>
+        </section>
+        {/* Outcomes Section */}
+        <section id="outcomes" style={{ margin: '64px 0 48px 0', textAlign: 'center' }}>
+          <h2 style={{ color: '#14ffe9', fontSize: '2rem', marginBottom: 18 }}>Outcomes</h2>
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 24, marginBottom: 24 }}>
+            <div style={outcomeCardStyle}><b>Saved 120+ hrs/month on approvals</b></div>
+            <div style={outcomeCardStyle}><b>Cut lead response from 48h → 2h</b></div>
+            <div style={outcomeCardStyle}><b>Unified 7 data sources into one dashboard</b></div>
+          </div>
+          <button style={{ background: 'linear-gradient(90deg,#14ffe9,#0ea5e9)', color: '#181c1f', fontWeight: 700, fontSize: '1.1rem', border: 'none', borderRadius: 8, padding: '0.7rem 1.5rem', cursor: 'pointer', boxShadow: '0 2px 8px #14ffe933' }}>
+            Read case studies
+          </button>
+        </section>
+        {/* Insights Section */}
+        <section id="insights" style={{ margin: '64px 0 48px 0', textAlign: 'center' }}>
+          <h2 style={{ color: '#14ffe9', fontSize: '2rem', marginBottom: 18 }}>Insights & Resources</h2>
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 24 }}>
+            <div style={insightCardStyle}><b>Playbooks & Checklists</b><br />Automation Readiness, Integration Intake Form, Data Key Standards.</div>
+            <div style={insightCardStyle}><b>Blog</b><br />Short, practical posts with checklists and downloads.</div>
+            <div style={insightCardStyle}><b>Newsletter</b><br />Subscribe for updates and resources.</div>
+          </div>
+          <button style={{ background: 'none', color: '#14ffe9', fontWeight: 700, fontSize: '1.1rem', border: '1.5px solid #14ffe9', borderRadius: 8, padding: '0.7rem 1.5rem', cursor: 'pointer', marginTop: 18 }}>
+            Get the Automation Readiness Checklist
+          </button>
+        </section>
+        {/* About Section */}
+        <section id="about" style={{ margin: '64px 0 48px 0', textAlign: 'center' }}>
+          <h2 style={{ color: '#14ffe9', fontSize: '2rem', marginBottom: 18 }}>About iSawyerSolutions</h2>
+          <p style={{ color: '#f8fafc', fontSize: '1.1rem', maxWidth: 800, margin: '0 auto' }}>
+            Why iSawyerSolutions? We bypass onboarding bureaucracy so we can start immediately. The industry standard has layers of consultants and multiple handoffs during projects; we work directly with your lead consultant (hands-on from idea to completion). Where the industry standard has email chains, ticketing systems, and extremely delayed replies, we offer direct communication via personal phone numbers & dedicated contacts, and priority support. Our tooling & partners, and pricing, are designed with your company's success at heart.
           </p>
+        </section>
+        {/* Contact Section */}
+        <section id="contact" style={{ margin: '64px 0 48px 0', textAlign: 'center' }}>
+          <h2 style={{ color: '#14ffe9', fontSize: '2rem', marginBottom: 18 }}>Contact Us</h2>
+          <form style={{ maxWidth: 400, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 16 }}>
+            <input type="text" placeholder="Name" style={inputStyle} required />
+            <input type="email" placeholder="Email" style={inputStyle} required />
+            <input type="text" placeholder="Company" style={inputStyle} />
+            <textarea placeholder="What's broken?" style={{ ...inputStyle, minHeight: 80 }} />
+            <input type="text" placeholder="Timeline" style={inputStyle} />
+            <button type="submit" style={{ background: 'linear-gradient(90deg,#14ffe9,#0ea5e9)', color: '#181c1f', fontWeight: 700, fontSize: '1.1rem', border: 'none', borderRadius: 8, padding: '0.7rem 1.5rem', cursor: 'pointer', marginTop: 8 }}>
+              Send
+            </button>
+          </form>
         </section>
       </main>
     </div>
   );
 }
 
+// Card styles for sections
+const serviceCardStyle = {
+  background: '#181c1f',
+  color: '#b2fefa',
+  borderRadius: 12,
+  padding: '1.2rem 1.3rem',
+  minWidth: 220,
+  maxWidth: 260,
+  fontSize: '1.08rem',
+  boxShadow: '0 2px 12px #14ffe91a',
+  marginBottom: 8,
+};
+const industryCardStyle = {
+  ...serviceCardStyle,
+  color: '#fff',
+};
+const outcomeCardStyle = {
+  ...serviceCardStyle,
+  color: '#14ffe9',
+  fontWeight: 700,
+  fontSize: '1.1rem',
+};
+const insightCardStyle = {
+  ...serviceCardStyle,
+  color: '#b2fefa',
+};
+const inputStyle = {
+  background: '#181c1f',
+  color: '#b2fefa',
+  border: '1.5px solid #14ffe9',
+  borderRadius: 8,
+  padding: '0.7rem 1rem',
+  fontSize: '1.05rem',
+  outline: 'none',
+};
+
 export default function RouterShim() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
+  <Route path="/accomplishments" element={<Accomplishments />} />
         <Route path="/login" element={<Login />} />
       </Routes>
     </Router>
