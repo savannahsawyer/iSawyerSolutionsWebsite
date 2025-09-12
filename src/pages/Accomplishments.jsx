@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
+// Default accomplishments list. We'll pair each item with a specific image via the `items` array below.
 const accomplishments = [
   'Saved clients millions of dollars by replacing old unreliable systems and delivering a resilient platform to process credit card payments',
   'Saved clients millions of dollars in animal feed costs with unique feed formulation software package that optimized production costs',
@@ -14,19 +15,23 @@ const accomplishments = [
   'Developed consumer electronic devices for home entertainment market',
 ];
 
-// Image files are located in the project root; reference them from public root (served at /)
+// Use actual images found in project root. These are served from project root (Vite/public) at '/filename'
 const galleryImages = [
-  '/IMG_0334.png',
-  '/IMG_0684.png',
-  '/IMG_1436.png',
-  '/IMG_2993.png',
-  '/IMG_4858.png',
-  '/IMG_6162.png',
-  '/IMG_6401.png',
-  '/IMG_6678.png',
-  '/IMG_7335.png',
-  '/IMG_9346.png',
+  '/millions saved.png', // saved clients millions
+  '/feed.png', // animal feed costs
+  '/product delivery designs.png', // tank & pressure vessel / manufacturing
+  '/improved safety and liability.png', // truss construction safety
+  '/tax calculations.png', // tax calculations interface
+  '/secure and scalable.png', // cloud/kubernetes migration
+  '/move to ecommerce.png', // ecommerce storefront migration
+  '/migrate to open source.png', // migrate datacenter services
+  '/product delivery designs.png', // manufacturing (alternate)
+  '/home entertainment devices.png', // consumer electronic devices
 ];
+
+// Explicit mapping: each object pairs the text with a chosen image path.
+// Update the `image` values if you want to swap which image matches which accomplishment.
+// By default we map images by index to the accomplishments (0 → 0, 1 → 1, ...)
 
 export default function Accomplishments() {
   const navigate = useNavigate();
@@ -46,11 +51,12 @@ export default function Accomplishments() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 20 }}>
           {accomplishments.map((text, idx) => (
             <div key={idx} style={{ background: '#0f1214', borderRadius: 14, overflow: 'hidden', boxShadow: '0 8px 30px rgba(2,6,23,0.6)', display: 'flex', flexDirection: 'column' }}>
-              <div style={{ width: '100%', aspectRatio: '16/9', overflow: 'hidden', background: '#0b0d0e' }}>
-                <img src={galleryImages[idx % galleryImages.length]} alt={`accomplishment-${idx}`} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+              <div style={{ width: '100%', overflow: 'hidden', background: '#0b0d0e', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <img src={galleryImages[idx % galleryImages.length]} alt={`accomplishment-${idx}`} style={{ width: '100%', height: 'auto', objectFit: 'contain', display: 'block', maxHeight: 360 }} />
               </div>
               <div style={{ padding: '1rem 1.1rem' }}>
                 <div style={{ color: '#fff', fontSize: '1.05rem', fontWeight: 700, lineHeight: 1.25 }}>{text}</div>
+                <div style={{ color: '#9aa1a6', fontSize: '0.85rem', marginTop: 8 }}>{galleryImages[idx % galleryImages.length].replace(/^\//, '')}</div>
               </div>
             </div>
           ))}
