@@ -1,4 +1,5 @@
 /* Responsive Design Enhancements */
+
 @media (max-width: 900px) {
   .container, main {
     max-width: 100vw !important;

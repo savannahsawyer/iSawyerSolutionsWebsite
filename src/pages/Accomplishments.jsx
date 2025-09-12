@@ -32,7 +32,7 @@ const galleryImages = [
 // Explicit mapping: each object pairs the text with a chosen image path.
 // Update the `image` values if you want to swap which image matches which accomplishment.
 // By default we map images by index to the accomplishments (0 → 0, 1 → 1, ...)
-
+//  
 export default function Accomplishments() {
   const navigate = useNavigate();
 

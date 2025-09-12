@@ -20,25 +20,57 @@ const scrollToSection = (id) => {
       {/* Main Content */}
       <main style={{ maxWidth: 1100, margin: '0 auto', padding: '3.5rem 1rem 2rem 1rem', textAlign: 'center' }}>
         {/* Hero Section */}
-        <section id="hero" style={{ marginBottom: 64 }}>
-          <img src="/logo.png" alt="iSawyer Logo" style={{ height: 'min(180px, 32vw)', maxWidth: '90vw', borderRadius: 14, background: 'transparent', display: 'block', margin: '0 auto 2rem auto' }} />
-          <h1 style={{ fontSize: '2.1rem', color: '#14ffe9', fontWeight: 700, marginBottom: 18, marginTop: 0, lineHeight: 1.1 }}>
-            I saw your solutions you never imagined possible.
-          </h1>
-          <div style={{ fontSize: '1.6rem', color: '#fff', fontWeight: 700, marginBottom: 18 }}>
-            Efficiency Experts + Automated Data = Maximized Profitability
+        <section id="hero" style={{ position: 'relative', overflow: 'hidden', marginBottom: 64 }}>
+          {/* Background video - using existing root video IMG_2668.mov. For best results convert to webm/mp4 and add both sources. */}
+          <video
+            className="hero-video"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            poster="/millions saved.png"
+            style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }}
+          >
+            <source src="/IMG_2668.mov" type="video/quicktime" />
+            {/* Recommended: add /background.webm and /background.mp4 if you convert the file for better browser support */}
+          </video>
+
+          {/* Dark overlay so text stays readable */}
+          <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.35)', zIndex: 1 }} />
+
+          {/* Hero content above video */}
+          <div style={{ position: 'relative', zIndex: 2, maxWidth: 1100, margin: '0 auto', padding: '2rem 1rem', textAlign: 'center' }}>
+            <img src="/logo.png" alt="iSawyer Logo" style={{ width: 'min(70vw, 520px)', height: 'auto', maxWidth: '90vw', borderRadius: 14, background: 'transparent', display: 'block', margin: '0 auto 2.2rem auto' }} />
+            <h1 style={{ fontSize: '2.1rem', color: '#14ffe9', fontWeight: 700, marginBottom: 18, marginTop: 0, lineHeight: 1.1 }}>
+              I saw your solutions you never imagined possible.
+            </h1>
+            <div style={{ fontSize: '1.6rem', color: '#fff', fontWeight: 700, marginBottom: 18 }}>
+              Efficiency Experts + Automated Data = Maximized Profitability
+            </div>
+            <div style={{ fontSize: '1.15rem', color: '#b2fefa', marginBottom: 32 }}>
+              Helping businesses unlock their full potential through smarter systems and data-driven automation.
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: 16, marginBottom: 12 }}>
+              <button style={{ background: 'linear-gradient(90deg,#14ffe9,#0ea5e9)', color: '#181c1f', fontWeight: 700, fontSize: '1.1rem', border: 'none', borderRadius: 8, padding: '0.7rem 1.5rem', cursor: 'pointer', boxShadow: '0 2px 8px #14ffe933' }}>
+                Book a consultation
+              </button>
+              <button style={{ background: 'none', color: '#14ffe9', fontWeight: 700, fontSize: '1.1rem', border: '1.5px solid #14ffe9', borderRadius: 8, padding: '0.7rem 1.5rem', cursor: 'pointer', marginLeft: 8 }} onClick={() => navigate('/accomplishments')}>
+                See accomplishments & case studies
+              </button>
+            </div>
           </div>
-          <div style={{ fontSize: '1.15rem', color: '#b2fefa', marginBottom: 32 }}>
-            Helping businesses unlock their full potential through smarter systems and data-driven automation.
-          </div>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: 16, marginBottom: 12 }}>
-            <button style={{ background: 'linear-gradient(90deg,#14ffe9,#0ea5e9)', color: '#181c1f', fontWeight: 700, fontSize: '1.1rem', border: 'none', borderRadius: 8, padding: '0.7rem 1.5rem', cursor: 'pointer', boxShadow: '0 2px 8px #14ffe933' }}>
-              Book a consultation
-            </button>
-            <button style={{ background: 'none', color: '#14ffe9', fontWeight: 700, fontSize: '1.1rem', border: '1.5px solid #14ffe9', borderRadius: 8, padding: '0.7rem 1.5rem', cursor: 'pointer', marginLeft: 8 }} onClick={() => navigate('/accomplishments')}>
-              See accomplishments & case studies
-            </button>
-          </div>
+
+          {/* Minimal CSS for fallbacks: hide video on small screens and respect reduced-motion */}
+          <style>{`
+            .hero-video { display:block; }
+            @media (max-width: 700px) {
+              .hero-video { display: none !important; }
+            }
+            @media (prefers-reduced-motion: reduce) {
+              .hero-video { display: none !important; }
+            }
+          `}</style>
         </section>
         {/* Services Section */}
         <section id="services" style={{ margin: '64px 0 48px 0', textAlign: 'center' }}>
