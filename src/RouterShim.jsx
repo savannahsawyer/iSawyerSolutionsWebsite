@@ -5,6 +5,8 @@ import Accomplishments from './pages/Accomplishments';
 import Industries from './pages/Industries';
 import Insights from './pages/Insights';
 import Contact from './pages/Contact';
+import About from './pages/About';
+import Services from './pages/Services';
 
 function Home() {
   const navigate = useNavigate();
@@ -81,25 +83,9 @@ const scrollToSection = (id) => {
             }
           `}</style>
         </section>
-        {/* Services Section */}
-        <section id="services" style={{ margin: '64px 0 48px 0', textAlign: 'center' }}>
-          <h2 style={{ color: '#14ffe9', fontSize: '2rem', marginBottom: 18 }}>Our Services</h2>
-          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 24 }}>
-            {/* Service Cards */}
-            <div style={serviceCardStyle}><b>Automation Ops</b><br />Remove hours of manual work with resilient, monitored automations.</div>
-            <div style={serviceCardStyle}><b>Systems Integration</b><br />Make apps that organizations use talk using robust APIs and battle-tested programs.</div>
-            <div style={serviceCardStyle}><b>Data & Analytics</b><br />Consolidate scattered spreadsheets into a trustworthy analytics layer.</div>
-            <div style={serviceCardStyle}><b>AI Readiness & Governance</b><br />Adopt AI with guardrails (data lineage, role-based access, change control).</div>
-          </div>
-        </section>
+  {/* Services Section moved to /services page */}
         {/* Outcomes Section removed as requested */}
-        {/* About Section */}
-        <section id="about" style={{ margin: '64px 0 48px 0', textAlign: 'center' }}>
-            <h2 style={{ color: '#14ffe9', fontSize: '2rem', marginBottom: 18 }}>About iSawyerSolutions</h2>
-          <p style={{ color: '#f8fafc', fontSize: '1.1rem', maxWidth: 800, margin: '0 auto' }}>
-            Why iSawyerSolutions? We bypass onboarding bureaucracy so we can start immediately. The industry standard has layers of consultants and multiple handoffs during projects; we work directly with your lead consultant (hands-on from idea to completion). Where the industry standard has email chains, ticketing systems, and extremely delayed replies, we offer direct communication via personal phone numbers & dedicated contacts, and priority support. Our tooling & partners, and pricing, are designed with your company's success at heart.
-          </p>
-        </section>
+  {/* About Section moved to /about page */}
   {/* Contact Section moved to /contact page */}
       </main>
     </div>
@@ -133,15 +119,14 @@ function NavBar() {
         }}
       >
   <img src="/logo.png" alt="iSawyer Logo" style={{ height: 64, borderRadius: 8, background: 'transparent', marginRight: 12, cursor: 'pointer' }} onClick={() => { navigate('/'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} />
-  <img src="/isawyersolutions.png" alt="iSawyer Solutions vertical" style={{ height: 48, borderRadius: 6, background: 'transparent', marginRight: 16 }} />
         <div style={{ display: 'flex', gap: 8 }}>
           {[
             { label: 'Home', id: 'home', route: '/' },
-            { label: 'Services', id: 'services' },
+            { label: 'Services', id: 'services', route: '/services' },
             { label: 'Industries', id: 'industries', route: '/industries' },
             { label: 'Accomplishments', id: 'accomplishments', route: '/accomplishments' },
             { label: 'Insights', id: 'insights', route: '/insights' },
-            { label: 'About', id: 'about' },
+            { label: 'About', id: 'about', route: '/about' },
             { label: 'Contact', id: 'contact', route: '/contact' },
           ].map((item) => (
             <button
@@ -249,8 +234,10 @@ export default function RouterShim() {
       <Routes>
         <Route path="/" element={<Home />} />
   <Route path="/accomplishments" element={<Accomplishments />} />
+  <Route path="/services" element={<Services />} />
   <Route path="/industries" element={<Industries />} />
   <Route path="/insights" element={<Insights />} />
+  <Route path="/about" element={<About />} />
   <Route path="/contact" element={<Contact />} />
   <Route path="/login" element={<Login />} />
       </Routes>
