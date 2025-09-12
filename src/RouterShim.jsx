@@ -2,6 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import Login from './Login';
 import Accomplishments from './pages/Accomplishments';
+import Industries from './pages/Industries';
+import Insights from './pages/Insights';
+import Contact from './pages/Contact';
 
 function Home() {
   const navigate = useNavigate();
@@ -23,7 +26,7 @@ const scrollToSection = (id) => {
         <section id="hero" style={{ position: 'relative', overflow: 'hidden', marginBottom: 64 }}>
           {/* Background video - using existing root video IMG_2668.mov. For best results convert to webm/mp4 and add both sources. */}
           <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#000', zIndex: 0 }}>
-            <div style={{ transform: 'rotate(-90deg)', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', height: '100%' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', height: '100%' }}>
               <video
                 className="hero-video"
                 autoPlay
@@ -45,6 +48,9 @@ const scrollToSection = (id) => {
 
           {/* Hero content above video */}
           <div style={{ position: 'relative', zIndex: 2, maxWidth: 1100, margin: '0 auto', padding: '2rem 1rem', textAlign: 'center' }}>
+            <div style={{ fontSize: '3rem', color: '#14ffe9', fontWeight: 900, marginBottom: 8, marginTop: 0, lineHeight: 1.05 }}>
+              iSawyerSolutions
+            </div>
             <h1 style={{ fontSize: '2.1rem', color: '#14ffe9', fontWeight: 700, marginBottom: 18, marginTop: 0, lineHeight: 1.1 }}>
               I saw your solutions you never imagined possible.
             </h1>
@@ -86,48 +92,15 @@ const scrollToSection = (id) => {
             <div style={serviceCardStyle}><b>AI Readiness & Governance</b><br />Adopt AI with guardrails (data lineage, role-based access, change control).</div>
           </div>
         </section>
-        {/* Industries Section */}
-        <section id="industries" style={{ margin: '64px 0 48px 0', textAlign: 'center' }}>
-          <h2 style={{ color: '#14ffe9', fontSize: '2rem', marginBottom: 18 }}>Industries</h2>
-          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 24 }}>
-            <div style={industryCardStyle}><b>Construction & Building Services</b><br />Data hygiene, job cost, efficiency asset/field data; time approvals; safety/compliance logs.</div>
-            <div style={industryCardStyle}><b>Events & Live Entertainment</b><br />Suite/box lead capture, allocation dashboards, ticketing/platform integrations, anti-fraud email rules, sponsor reporting.</div>
-          </div>
-        </section>
-  {/* Outcomes Section removed as requested */}
-        {/* Insights Section */}
-        <section id="insights" style={{ margin: '64px 0 48px 0', textAlign: 'center' }}>
-          <h2 style={{ color: '#14ffe9', fontSize: '2rem', marginBottom: 18 }}>Insights & Resources</h2>
-          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 24 }}>
-            <div style={insightCardStyle}><b>Playbooks & Checklists</b><br />Automation Readiness, Integration Intake Form, Data Key Standards.</div>
-            <div style={insightCardStyle}><b>Blog</b><br />Short, practical posts with checklists and downloads.</div>
-            <div style={insightCardStyle}><b>Newsletter</b><br />Subscribe for updates and resources.</div>
-          </div>
-          <button style={{ background: 'none', color: '#14ffe9', fontWeight: 700, fontSize: '1.1rem', border: '1.5px solid #14ffe9', borderRadius: 8, padding: '0.7rem 1.5rem', cursor: 'pointer', marginTop: 18 }}>
-            Get the Automation Readiness Checklist
-          </button>
-        </section>
+        {/* Outcomes Section removed as requested */}
         {/* About Section */}
         <section id="about" style={{ margin: '64px 0 48px 0', textAlign: 'center' }}>
-          <h2 style={{ color: '#14ffe9', fontSize: '2rem', marginBottom: 18 }}>About iSawyerSolutions</h2>
+            <h2 style={{ color: '#14ffe9', fontSize: '2rem', marginBottom: 18 }}>About iSawyerSolutions</h2>
           <p style={{ color: '#f8fafc', fontSize: '1.1rem', maxWidth: 800, margin: '0 auto' }}>
             Why iSawyerSolutions? We bypass onboarding bureaucracy so we can start immediately. The industry standard has layers of consultants and multiple handoffs during projects; we work directly with your lead consultant (hands-on from idea to completion). Where the industry standard has email chains, ticketing systems, and extremely delayed replies, we offer direct communication via personal phone numbers & dedicated contacts, and priority support. Our tooling & partners, and pricing, are designed with your company's success at heart.
           </p>
         </section>
-        {/* Contact Section */}
-        <section id="contact" style={{ margin: '64px 0 48px 0', textAlign: 'center' }}>
-          <h2 style={{ color: '#14ffe9', fontSize: '2rem', marginBottom: 18 }}>Contact Us</h2>
-          <form style={{ maxWidth: 400, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 16 }}>
-            <input type="text" placeholder="Name" style={inputStyle} required />
-            <input type="email" placeholder="Email" style={inputStyle} required />
-            <input type="text" placeholder="Company" style={inputStyle} />
-            <textarea placeholder="What's broken?" style={{ ...inputStyle, minHeight: 80 }} />
-            <input type="text" placeholder="Timeline" style={inputStyle} />
-            <button type="submit" style={{ background: 'linear-gradient(90deg,#14ffe9,#0ea5e9)', color: '#181c1f', fontWeight: 700, fontSize: '1.1rem', border: 'none', borderRadius: 8, padding: '0.7rem 1.5rem', cursor: 'pointer', marginTop: 8 }}>
-              Send
-            </button>
-          </form>
-        </section>
+  {/* Contact Section moved to /contact page */}
       </main>
     </div>
   );
@@ -159,16 +132,17 @@ function NavBar() {
           height: navHeight,
         }}
       >
-  <img src="/logo.png" alt="iSawyer Logo" style={{ height: 64, borderRadius: 8, background: 'transparent', marginRight: 16, cursor: 'pointer' }} onClick={() => { navigate('/'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} />
+  <img src="/logo.png" alt="iSawyer Logo" style={{ height: 64, borderRadius: 8, background: 'transparent', marginRight: 12, cursor: 'pointer' }} onClick={() => { navigate('/'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} />
+  <img src="/isawyersolutions.png" alt="iSawyer Solutions vertical" style={{ height: 48, borderRadius: 6, background: 'transparent', marginRight: 16 }} />
         <div style={{ display: 'flex', gap: 8 }}>
           {[
             { label: 'Home', id: 'home', route: '/' },
             { label: 'Services', id: 'services' },
-            { label: 'Industries', id: 'industries' },
+            { label: 'Industries', id: 'industries', route: '/industries' },
             { label: 'Accomplishments', id: 'accomplishments', route: '/accomplishments' },
-            { label: 'Insights', id: 'insights' },
+            { label: 'Insights', id: 'insights', route: '/insights' },
             { label: 'About', id: 'about' },
-            { label: 'Contact', id: 'contact' },
+            { label: 'Contact', id: 'contact', route: '/contact' },
           ].map((item) => (
             <button
               key={item.id}
@@ -274,8 +248,11 @@ export default function RouterShim() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/accomplishments" element={<Accomplishments />} />
-        <Route path="/login" element={<Login />} />
+  <Route path="/accomplishments" element={<Accomplishments />} />
+  <Route path="/industries" element={<Industries />} />
+  <Route path="/insights" element={<Insights />} />
+  <Route path="/contact" element={<Contact />} />
+  <Route path="/login" element={<Login />} />
       </Routes>
     </Router>
   );
