@@ -33,7 +33,7 @@ export default function Accomplishments() {
 
   return (
     <div style={{ minHeight: '100vh', background: '#0a0d12', color: '#b2fefa', padding: '2.5rem 1rem' }}>
-      <div style={{ maxWidth: 1000, margin: '0 auto' }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 24 }}>
           <h1 style={{ color: '#14ffe9', margin: 0 }}>Accomplishments</h1>
           <div>
@@ -43,11 +43,15 @@ export default function Accomplishments() {
           </div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 18 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 20 }}>
           {accomplishments.map((text, idx) => (
-            <div key={idx} style={{ display: 'flex', gap: 12, alignItems: 'center', background: '#181c1f', padding: 16, borderRadius: 10, boxShadow: '0 2px 12px #14ffe91a' }}>
-              <img src={galleryImages[idx % galleryImages.length]} alt={`accomplishment-${idx}`} style={{ width: 96, height: 72, objectFit: 'cover', borderRadius: 8 }} />
-              <div style={{ color: '#fff', fontSize: '1.02rem', fontWeight: 600 }}>{text}</div>
+            <div key={idx} style={{ background: '#0f1214', borderRadius: 14, overflow: 'hidden', boxShadow: '0 8px 30px rgba(2,6,23,0.6)', display: 'flex', flexDirection: 'column' }}>
+              <div style={{ width: '100%', aspectRatio: '16/9', overflow: 'hidden', background: '#0b0d0e' }}>
+                <img src={galleryImages[idx % galleryImages.length]} alt={`accomplishment-${idx}`} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+              </div>
+              <div style={{ padding: '1rem 1.1rem' }}>
+                <div style={{ color: '#fff', fontSize: '1.05rem', fontWeight: 700, lineHeight: 1.25 }}>{text}</div>
+              </div>
             </div>
           ))}
         </div>
