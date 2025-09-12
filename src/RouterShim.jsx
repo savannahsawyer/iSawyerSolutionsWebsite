@@ -23,19 +23,21 @@ const scrollToSection = (id) => {
         <section id="hero" style={{ position: 'relative', overflow: 'hidden', marginBottom: 64 }}>
           {/* Background video - using existing root video IMG_2668.mov. For best results convert to webm/mp4 and add both sources. */}
           <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#000', zIndex: 0 }}>
-            <video
-              className="hero-video"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              poster="/millions saved.png"
-              style={{ width: '100%', height: 'min(720px, 80vh)', maxHeight: 1080, objectFit: 'contain', objectPosition: 'center', background: '#000' }}
-            >
-              <source src="/IMG_2668.mov" type="video/quicktime" />
-              {/* Recommended: add /background.webm and /background.mp4 if you convert the file for better browser support */}
-            </video>
+            <div style={{ transform: 'rotate(-90deg)', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', height: '100%' }}>
+              <video
+                className="hero-video"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                poster="/millions saved.png"
+                style={{ width: '120%', height: 'auto', maxHeight: '140vh', objectFit: 'contain', objectPosition: 'center', background: '#000', transformOrigin: 'center' }}
+              >
+                <source src="/IMG_2668.mov" type="video/quicktime" />
+                {/* Recommended: add /background.webm and /background.mp4 if you convert the file for better browser support */}
+              </video>
+            </div>
           </div>
 
           {/* Dark overlay so text stays readable */}
