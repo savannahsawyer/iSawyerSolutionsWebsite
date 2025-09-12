@@ -64,7 +64,7 @@ const scrollToSection = (id) => {
               iSawyerSolutions
             </div>
             <h1 style={{ fontSize: '2.6rem', color: '#14ffe9', fontWeight: 800, marginBottom: 20, marginTop: 0, lineHeight: 1.03, maxWidth: '92%' }}>
-              I saw your solutions you never imagined possible.
+              I saw your solutions<br />you never imagined possible.
             </h1>
             <div style={{ fontSize: '1.3rem', color: '#fff', fontWeight: 700, marginBottom: 18, maxWidth: 900 }}>
               Efficiency Experts + Automated Data = Maximized Profitability
@@ -73,11 +73,8 @@ const scrollToSection = (id) => {
               Helping businesses unlock their full potential through smarter systems and data-driven automation.
             </div>
             <div style={{ display: 'flex', justifyContent: 'center', gap: 16, marginBottom: 12, flexWrap: 'wrap' }}>
-              <button style={{ background: 'linear-gradient(90deg,#14ffe9,#0ea5e9)', color: '#181c1f', fontWeight: 700, fontSize: '1.05rem', border: 'none', borderRadius: 8, padding: '0.7rem 1.3rem', cursor: 'pointer', boxShadow: '0 2px 8px #14ffe933' }}>
-                Book a consultation
-              </button>
-              <button style={{ background: 'none', color: '#14ffe9', fontWeight: 700, fontSize: '1.05rem', border: '1.5px solid #14ffe9', borderRadius: 8, padding: '0.7rem 1.3rem', cursor: 'pointer', marginLeft: 8 }} onClick={() => navigate('/accomplishments')}>
-                See accomplishments & case studies
+              <button onClick={() => navigate('/contact')} style={{ background: 'linear-gradient(90deg,#14ffe9,#0ea5e9)', color: '#181c1f', fontWeight: 700, fontSize: '1.05rem', border: 'none', borderRadius: 8, padding: '0.7rem 1.3rem', cursor: 'pointer', boxShadow: '0 2px 8px #14ffe933' }}>
+                Book a Consultation For a Free Quote
               </button>
             </div>
           </div>
@@ -140,7 +137,6 @@ function NavBar() {
             { label: 'Services', id: 'services', route: '/services' },
             { label: 'Industries', id: 'industries', route: '/industries' },
             { label: 'Accomplishments', id: 'accomplishments', route: '/accomplishments' },
-            { label: 'Insights', id: 'insights', route: '/insights' },
             { label: 'About', id: 'about', route: '/about' },
             { label: 'Contact', id: 'contact', route: '/contact' },
           ].map((item) => (
