@@ -17,81 +17,6 @@ const scrollToSection = (id) => {
 };
   return (
     <div style={{ minHeight: '100vh', background: '#0a0d12' }}>
-      {/* Nav Bar */}
-      <nav
-        style={{
-          width: '100vw',
-          maxWidth: '100vw',
-          background: '#181c1f',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          padding: '0.5rem 1.2rem',
-          boxSizing: 'border-box',
-          boxShadow: '0 2px 12px rgba(20,255,233,0.07)',
-          position: 'sticky',
-          top: 0,
-          zIndex: 10,
-          overflow: 'hidden',
-        }}
-      >
-        <img src="/logo.png" alt="iSawyer Logo" style={{ height: 48, borderRadius: 8, background: 'transparent', marginRight: 16 }} />
-        <div style={{ display: 'flex', gap: 8 }}>
-          {[
-            { label: 'Services', id: 'services' },
-            { label: 'Industries', id: 'industries' },
-            { label: 'Accomplishments', id: 'accomplishments', route: '/accomplishments' },
-            { label: 'Insights', id: 'insights' },
-            { label: 'About', id: 'about' },
-            { label: 'Contact', id: 'contact' },
-          ].map((item) => (
-            <button
-              key={item.id}
-              style={{
-                background: 'none',
-                color: '#b2fefa',
-                fontWeight: 700,
-                fontSize: '1rem',
-                border: 'none',
-                cursor: 'pointer',
-                textShadow: '0 1px 8px #0ea5e9',
-                padding: '0.3rem 0.7rem',
-                borderRadius: 6,
-                whiteSpace: 'nowrap',
-                transition: 'background 0.2s',
-              }}
-              onClick={() => {
-                if (item.route) {
-                  navigate(item.route);
-                } else {
-                  scrollToSection(item.id);
-                }
-              }}
-            >
-              {item.label}
-            </button>
-          ))}
-          <button
-            style={{
-              background: 'none',
-              color: '#14ffe9',
-              fontWeight: 700,
-              fontSize: '1rem',
-              border: '1px solid #14ffe9',
-              cursor: 'pointer',
-              textShadow: '0 1px 8px #0ea5e9',
-              padding: '0.3rem 0.7rem',
-              borderRadius: 6,
-              marginLeft: 8,
-              whiteSpace: 'nowrap',
-              transition: 'background 0.2s',
-            }}
-            onClick={() => navigate('/login')}
-          >
-            Client Login
-          </button>
-        </div>
-      </nav>
       {/* Main Content */}
       <main style={{ maxWidth: 1100, margin: '0 auto', padding: '3.5rem 1rem 2rem 1rem', textAlign: 'center' }}>
         {/* Hero Section */}
@@ -134,18 +59,7 @@ const scrollToSection = (id) => {
             <div style={industryCardStyle}><b>Events & Live Entertainment</b><br />Suite/box lead capture, allocation dashboards, ticketing/platform integrations, anti-fraud email rules, sponsor reporting.</div>
           </div>
         </section>
-        {/* Outcomes Section */}
-        <section id="outcomes" style={{ margin: '64px 0 48px 0', textAlign: 'center' }}>
-          <h2 style={{ color: '#14ffe9', fontSize: '2rem', marginBottom: 18 }}>Outcomes</h2>
-          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 24, marginBottom: 24 }}>
-            <div style={outcomeCardStyle}><b>Saved 120+ hrs/month on approvals</b></div>
-            <div style={outcomeCardStyle}><b>Cut lead response from 48h → 2h</b></div>
-            <div style={outcomeCardStyle}><b>Unified 7 data sources into one dashboard</b></div>
-          </div>
-          <button style={{ background: 'linear-gradient(90deg,#14ffe9,#0ea5e9)', color: '#181c1f', fontWeight: 700, fontSize: '1.1rem', border: 'none', borderRadius: 8, padding: '0.7rem 1.5rem', cursor: 'pointer', boxShadow: '0 2px 8px #14ffe933' }}>
-            Read case studies
-          </button>
-        </section>
+  {/* Outcomes Section removed as requested */}
         {/* Insights Section */}
         <section id="insights" style={{ margin: '64px 0 48px 0', textAlign: 'center' }}>
           <h2 style={{ color: '#14ffe9', fontSize: '2rem', marginBottom: 18 }}>Insights & Resources</h2>
@@ -181,6 +95,105 @@ const scrollToSection = (id) => {
         </section>
       </main>
     </div>
+  );
+}
+
+// top-level nav component so it's always visible across routes
+function NavBar() {
+  const navigate = useNavigate();
+  const navHeight = 72;
+  return (
+    <>
+  <nav
+        style={{
+          width: '100vw',
+          maxWidth: '100vw',
+          background: '#181c1f',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          padding: '0.6rem 1.2rem',
+          boxSizing: 'border-box',
+          boxShadow: '0 2px 12px rgba(20,255,233,0.07)',
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 9999,
+          overflow: 'hidden',
+          height: navHeight,
+        }}
+      >
+  <img src="/logo.png" alt="iSawyer Logo" style={{ height: 64, borderRadius: 8, background: 'transparent', marginRight: 16, cursor: 'pointer' }} onClick={() => { navigate('/'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} />
+        <div style={{ display: 'flex', gap: 8 }}>
+          {[
+            { label: 'Home', id: 'home', route: '/' },
+            { label: 'Services', id: 'services' },
+            { label: 'Industries', id: 'industries' },
+            { label: 'Accomplishments', id: 'accomplishments', route: '/accomplishments' },
+            { label: 'Insights', id: 'insights' },
+            { label: 'About', id: 'about' },
+            { label: 'Contact', id: 'contact' },
+          ].map((item) => (
+            <button
+              key={item.id}
+              style={{
+                background: 'none',
+                color: '#b2fefa',
+                fontWeight: 700,
+                fontSize: '1rem',
+                border: 'none',
+                cursor: 'pointer',
+                textShadow: '0 1px 8px #0ea5e9',
+                padding: '0.3rem 0.7rem',
+                borderRadius: 6,
+                whiteSpace: 'nowrap',
+                transition: 'background 0.2s',
+              }}
+              onClick={() => {
+                if (item.route) {
+                  navigate(item.route);
+                  // if going home, ensure page top is visible
+                  if (item.route === '/') {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }
+                } else {
+                  const el = document.getElementById(item.id);
+                  if (el) {
+                    const yOffset = -navHeight + 8;
+                    const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                    window.scrollTo({ top: y, behavior: 'smooth' });
+                  }
+                }
+              }}
+            >
+              {item.label}
+            </button>
+          ))}
+          <button
+            style={{
+              background: 'none',
+              color: '#14ffe9',
+              fontWeight: 700,
+              fontSize: '1rem',
+              border: '1px solid #14ffe9',
+              cursor: 'pointer',
+              textShadow: '0 1px 8px #0ea5e9',
+              padding: '0.3rem 0.7rem',
+              borderRadius: 6,
+              marginLeft: 8,
+              whiteSpace: 'nowrap',
+              transition: 'background 0.2s',
+            }}
+            onClick={() => navigate('/login')}
+          >
+            Client Login
+          </button>
+        </div>
+      </nav>
+      {/* spacer to prevent content being hidden under fixed nav */}
+      <div style={{ height: 72 }} />
+    </>
   );
 }
 
@@ -223,9 +236,10 @@ const inputStyle = {
 export default function RouterShim() {
   return (
     <Router>
+      <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
-  <Route path="/accomplishments" element={<Accomplishments />} />
+        <Route path="/accomplishments" element={<Accomplishments />} />
         <Route path="/login" element={<Login />} />
       </Routes>
     </Router>

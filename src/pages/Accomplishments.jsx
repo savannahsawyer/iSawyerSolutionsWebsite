@@ -39,13 +39,8 @@ export default function Accomplishments() {
   return (
     <div style={{ minHeight: '100vh', background: '#0a0d12', color: '#b2fefa', padding: '2.5rem 1rem' }}>
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 24 }}>
+        <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', marginBottom: 24 }}>
           <h1 style={{ color: '#14ffe9', margin: 0 }}>Accomplishments</h1>
-          <div>
-            <button onClick={() => navigate('/')} style={{ background: 'none', color: '#14ffe9', border: '1px solid #14ffe9', padding: '0.5rem 0.8rem', borderRadius: 8, cursor: 'pointer' }}>
-              Back to Home
-            </button>
-          </div>
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 20 }}>
