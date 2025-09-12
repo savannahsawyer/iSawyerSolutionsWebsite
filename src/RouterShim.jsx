@@ -21,14 +21,13 @@ const scrollToSection = (id) => {
   }
 };
   return (
-    <div style={{ minHeight: '100vh', background: '#0a0d12' }}>
-      {/* Main Content */}
-      <main style={{ maxWidth: 1100, margin: '0 auto', padding: '3.5rem 1rem 2rem 1rem', textAlign: 'center' }}>
+    <div style={{ minHeight: '100vh', background: '#0a0d12', overflow: 'hidden' }}>
+      {/* Main Content - constrain to viewport (nav spacer exists above) */}
+      <main style={{ maxWidth: 1100, margin: '0 auto', padding: 0, textAlign: 'center', height: 'calc(100vh - 72px)', overflow: 'hidden' }}>
         {/* Hero Section */}
-        <section id="hero" style={{ position: 'relative', overflow: 'hidden', marginBottom: 64 }}>
-          {/* Background video - using existing root video IMG_2668.mov. For best results convert to webm/mp4 and add both sources. */}
-          <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#000', zIndex: 0 }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', height: '100%' }}>
+  <section id="hero" style={{ position: 'relative', overflow: 'hidden', height: '100%' }}>
+            {/* Background video - fills viewport behind content */}
+            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, overflow: 'hidden', zIndex: 0, background: '#000' }}>
               <video
                 className="hero-video"
                 autoPlay
@@ -37,36 +36,47 @@ const scrollToSection = (id) => {
                 playsInline
                 preload="metadata"
                 poster="/millions saved.png"
-                style={{ width: '120%', height: 'auto', maxHeight: '140vh', objectFit: 'contain', objectPosition: 'center', background: '#000', transformOrigin: 'center' }}
+                style={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  width: '100vw',
+                  height: '100vh',
+                  transform: 'translate(-50%, -50%)',
+                  objectFit: 'cover',
+                  objectPosition: 'center',
+                  background: '#000',
+                  minWidth: '100%',
+                  minHeight: '100%'
+                }}
               >
                 <source src="/typing.mov" type="video/quicktime" />
                 {/* Recommended: add /background.webm and /background.mp4 if you convert the file for better browser support */}
               </video>
             </div>
-          </div>
 
           {/* Dark overlay so text stays readable */}
           <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.35)', zIndex: 1 }} />
 
-          {/* Hero content above video */}
-          <div style={{ position: 'relative', zIndex: 2, maxWidth: 1100, margin: '0 auto', padding: '2rem 1rem', textAlign: 'center' }}>
-            <div style={{ fontSize: '3rem', color: '#14ffe9', fontWeight: 900, marginBottom: 8, marginTop: 0, lineHeight: 1.05 }}>
+          {/* Hero content above video - vertically centered and responsive */}
+          <div style={{ position: 'relative', zIndex: 2, maxWidth: 1100, margin: '0 auto', padding: '0 1rem', textAlign: 'center', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+            <div style={{ fontSize: '3rem', color: '#14ffe9', fontWeight: 900, marginBottom: 12, marginTop: 0, lineHeight: 1.02 }}>
               iSawyerSolutions
             </div>
-            <h1 style={{ fontSize: '2.1rem', color: '#14ffe9', fontWeight: 700, marginBottom: 18, marginTop: 0, lineHeight: 1.1 }}>
+            <h1 style={{ fontSize: '2.6rem', color: '#14ffe9', fontWeight: 800, marginBottom: 20, marginTop: 0, lineHeight: 1.03, maxWidth: '92%' }}>
               I saw your solutions you never imagined possible.
             </h1>
-            <div style={{ fontSize: '1.6rem', color: '#fff', fontWeight: 700, marginBottom: 18 }}>
+            <div style={{ fontSize: '1.3rem', color: '#fff', fontWeight: 700, marginBottom: 18, maxWidth: 900 }}>
               Efficiency Experts + Automated Data = Maximized Profitability
             </div>
-            <div style={{ fontSize: '1.15rem', color: '#b2fefa', marginBottom: 32 }}>
+            <div style={{ fontSize: '1.05rem', color: '#b2fefa', marginBottom: 32, maxWidth: 820 }}>
               Helping businesses unlock their full potential through smarter systems and data-driven automation.
             </div>
-            <div style={{ display: 'flex', justifyContent: 'center', gap: 16, marginBottom: 12 }}>
-              <button style={{ background: 'linear-gradient(90deg,#14ffe9,#0ea5e9)', color: '#181c1f', fontWeight: 700, fontSize: '1.1rem', border: 'none', borderRadius: 8, padding: '0.7rem 1.5rem', cursor: 'pointer', boxShadow: '0 2px 8px #14ffe933' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: 16, marginBottom: 12, flexWrap: 'wrap' }}>
+              <button style={{ background: 'linear-gradient(90deg,#14ffe9,#0ea5e9)', color: '#181c1f', fontWeight: 700, fontSize: '1.05rem', border: 'none', borderRadius: 8, padding: '0.7rem 1.3rem', cursor: 'pointer', boxShadow: '0 2px 8px #14ffe933' }}>
                 Book a consultation
               </button>
-              <button style={{ background: 'none', color: '#14ffe9', fontWeight: 700, fontSize: '1.1rem', border: '1.5px solid #14ffe9', borderRadius: 8, padding: '0.7rem 1.5rem', cursor: 'pointer', marginLeft: 8 }} onClick={() => navigate('/accomplishments')}>
+              <button style={{ background: 'none', color: '#14ffe9', fontWeight: 700, fontSize: '1.05rem', border: '1.5px solid #14ffe9', borderRadius: 8, padding: '0.7rem 1.3rem', cursor: 'pointer', marginLeft: 8 }} onClick={() => navigate('/accomplishments')}>
                 See accomplishments & case studies
               </button>
             </div>
@@ -75,11 +85,16 @@ const scrollToSection = (id) => {
           {/* Minimal CSS for fallbacks: hide video on small screens and respect reduced-motion */}
           <style>{`
             .hero-video { display:block; }
-            @media (max-width: 700px) {
+            @media (max-width: 900px) {
+              /* show poster on smaller screens for performance */
               .hero-video { display: none !important; }
             }
             @media (prefers-reduced-motion: reduce) {
               .hero-video { display: none !important; }
+            }
+            @media (max-width: 520px) {
+              /* tighter mobile typography */
+              h1 { font-size: 1.6rem !important; }
             }
           `}</style>
         </section>
