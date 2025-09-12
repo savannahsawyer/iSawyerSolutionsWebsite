@@ -19,7 +19,7 @@ export default function Contact() {
         <input type="text" placeholder="Name" style={inputStyle} required />
         <input type="email" placeholder="Email" style={inputStyle} required />
         <input type="text" placeholder="Company" style={inputStyle} />
-  <textarea placeholder="What's broken?" style={{ ...inputStyle, minHeight: 80 }} />
+  <textarea placeholder="Please type your message inquire here." style={{ ...inputStyle, minHeight: 80 }} />
         <button type="submit" style={{ background: 'linear-gradient(90deg,#14ffe9,#0ea5e9)', color: '#181c1f', fontWeight: 700, fontSize: '1.1rem', border: 'none', borderRadius: 8, padding: '0.7rem 1.5rem', cursor: 'pointer', marginTop: 8, width: '100%', boxSizing: 'border-box' }}>
           Send
         </button>
