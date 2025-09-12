@@ -22,26 +22,28 @@ const scrollToSection = (id) => {
         {/* Hero Section */}
         <section id="hero" style={{ position: 'relative', overflow: 'hidden', marginBottom: 64 }}>
           {/* Background video - using existing root video IMG_2668.mov. For best results convert to webm/mp4 and add both sources. */}
-          <video
-            className="hero-video"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            poster="/millions saved.png"
-            style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }}
-          >
-            <source src="/IMG_2668.mov" type="video/quicktime" />
-            {/* Recommended: add /background.webm and /background.mp4 if you convert the file for better browser support */}
-          </video>
+          <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#000', zIndex: 0 }}>
+            <video
+              className="hero-video"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              poster="/millions saved.png"
+              style={{ width: '100%', height: 'min(720px, 80vh)', maxHeight: 1080, objectFit: 'contain', objectPosition: 'center', background: '#000' }}
+            >
+              <source src="/IMG_2668.mov" type="video/quicktime" />
+              {/* Recommended: add /background.webm and /background.mp4 if you convert the file for better browser support */}
+            </video>
+          </div>
 
           {/* Dark overlay so text stays readable */}
           <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.35)', zIndex: 1 }} />
 
           {/* Hero content above video */}
           <div style={{ position: 'relative', zIndex: 2, maxWidth: 1100, margin: '0 auto', padding: '2rem 1rem', textAlign: 'center' }}>
-            <img src="/logo.png" alt="iSawyer Logo" style={{ width: 'min(70vw, 520px)', height: 'auto', maxWidth: '90vw', borderRadius: 14, background: 'transparent', display: 'block', margin: '0 auto 2.2rem auto' }} />
+            <img src="/logo.png" alt="iSawyer Logo" style={{ width: 'min(48vw, 360px)', height: 'auto', maxWidth: '80vw', borderRadius: 14, background: 'transparent', display: 'block', margin: '0 auto 1.6rem auto' }} />
             <h1 style={{ fontSize: '2.1rem', color: '#14ffe9', fontWeight: 700, marginBottom: 18, marginTop: 0, lineHeight: 1.1 }}>
               I saw your solutions you never imagined possible.
             </h1>
