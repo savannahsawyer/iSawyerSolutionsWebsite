@@ -34,7 +34,7 @@ const scrollToSection = (id) => {
                 poster="/millions saved.png"
                 style={{ width: '120%', height: 'auto', maxHeight: '140vh', objectFit: 'contain', objectPosition: 'center', background: '#000', transformOrigin: 'center' }}
               >
-                <source src="/IMG_2668.mov" type="video/quicktime" />
+                <source src="/typing.mov" type="video/quicktime" />
                 {/* Recommended: add /background.webm and /background.mp4 if you convert the file for better browser support */}
               </video>
             </div>
@@ -45,7 +45,6 @@ const scrollToSection = (id) => {
 
           {/* Hero content above video */}
           <div style={{ position: 'relative', zIndex: 2, maxWidth: 1100, margin: '0 auto', padding: '2rem 1rem', textAlign: 'center' }}>
-            <img src="/logo.png" alt="iSawyer Logo" style={{ width: 'min(48vw, 360px)', height: 'auto', maxWidth: '80vw', borderRadius: 14, background: 'transparent', display: 'block', margin: '0 auto 1.6rem auto' }} />
             <h1 style={{ fontSize: '2.1rem', color: '#14ffe9', fontWeight: 700, marginBottom: 18, marginTop: 0, lineHeight: 1.1 }}>
               I saw your solutions you never imagined possible.
             </h1>
