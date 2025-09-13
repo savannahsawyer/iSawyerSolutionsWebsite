@@ -15,7 +15,7 @@ const industryCardStyle = {
 export default function Industries() {
   return (
     <main style={{ maxWidth: 1100, margin: '3.5rem auto', padding: '1rem' }}>
-      <div className="brand-header brand-header--big">iSawyerSoltuions</div>
+  <div className="brand-header brand-header--big">iSawyerSolutions</div>
       <h2 style={{ color: '#14ffe9', fontSize: '2rem', marginBottom: 18, textAlign: 'center' }}>Industries</h2>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 20 }}>
         <div style={industryCardStyle}>

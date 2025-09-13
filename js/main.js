@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', function(){
     });
   });
 
+  // No video fade logic: show the video directly (preload=auto used in index.html)
+
   // Basic contact form handler (no backend) — show a thank-you message
   const form = document.querySelector('form.contact-form');
   if(form){

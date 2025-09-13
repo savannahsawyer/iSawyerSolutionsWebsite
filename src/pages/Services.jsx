@@ -15,7 +15,7 @@ const serviceCardStyle = {
 export default function Services() {
   return (
     <main style={{ maxWidth: 1100, margin: '3.5rem auto', padding: '1rem', textAlign: 'center' }}>
-      <div className="brand-header brand-header--services">iSawyerSoltuions</div>
+  <div className="brand-header brand-header--big">iSawyerSolutions</div>
       <h2 style={{ color: '#14ffe9', fontSize: '2rem', marginBottom: 18 }}>Our Services</h2>
       <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 24 }}>
         <div style={serviceCardStyle}><b>Automation Ops</b><br />Remove hours of manual work with resilient, monitored automations.</div>

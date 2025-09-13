@@ -40,7 +40,7 @@ export default function Accomplishments() {
     <div style={{ minHeight: '100vh', background: '#0a0d12', color: '#b2fefa', padding: '2.5rem 1rem' }}>
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>
         <div style={{ marginBottom: 8 }}>
-          <div className="brand-header brand-header--big">iSawyerSoltuions</div>
+          <div className="brand-header brand-header--big">iSawyerSolutions</div>
         </div>
         <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', marginBottom: 24 }}>
           <h1 style={{ color: '#14ffe9', margin: 0 }}>Accomplishments</h1>

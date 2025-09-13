@@ -1,4 +1,3 @@
-// RouterShim wraps the app with React Router
-// savannah csawyer is amazing and i love myself oh yeah oh yeah 
-import RouterShim from './RouterShim';
-export default RouterShim;
+// App.jsx removed - project converted to static HTML
+// Keep this placeholder to indicate the React app was intentionally removed.
+export default null;
