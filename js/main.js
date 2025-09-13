@@ -91,3 +91,49 @@ document.addEventListener('DOMContentLoaded', function(){
     });
   }
 });
+
+// Mobile hamburger: inject a hamburger button and mobile menu (mobile only)
+(function setupMobileHamburger(){
+  if (window.matchMedia && !window.matchMedia('(max-width:520px)').matches) return;
+  const nav = document.querySelector('.nav');
+  if(!nav) return;
+
+  // Create hamburger button
+  const hamb = document.createElement('button');
+  hamb.className = 'hamburger';
+  hamb.setAttribute('aria-label','Open menu');
+  hamb.innerHTML = '<span class="bar"></span><span class="bar"></span><span class="bar"></span>';
+
+  // Create mobile menu container
+  const menu = document.createElement('div');
+  menu.className = 'mobile-menu';
+
+  // Clone nav links into the mobile menu
+  const links = nav.querySelector('.links');
+  if(links){
+    links.querySelectorAll('.link').forEach(btn=>{
+      const copy = document.createElement('button');
+      copy.className = 'link';
+      copy.textContent = btn.textContent;
+      const href = btn.getAttribute('data-href');
+      if(href) copy.setAttribute('data-href', href);
+      menu.appendChild(copy);
+    });
+  }
+
+  hamb.addEventListener('click', function(e){
+    e.stopPropagation();
+    menu.classList.toggle('open');
+  });
+
+  // Close menu on outside click
+  document.addEventListener('click', function(ev){
+    if(!menu.contains(ev.target) && !hamb.contains(ev.target)){
+      menu.classList.remove('open');
+    }
+  });
+
+  // Insert hamburger and menu into nav
+  nav.appendChild(hamb);
+  document.body.appendChild(menu);
+})();
