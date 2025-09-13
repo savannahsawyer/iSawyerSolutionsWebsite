@@ -145,3 +145,29 @@ button:hover {
   background: linear-gradient(90deg, #0ea5e9 0%, #14ffe9 100%);
   color: #fff;
 }
+
+/* Brand header styles used on several pages */
+.brand-header {
+  color: #14ffe9;
+  font-weight: 800;
+  text-align: center;
+  margin: 0 0 0.5rem 0;
+  text-shadow: 0 2px 8px #0ea5e9;
+  font-family: 'Inter', Arial, sans-serif;
+}
+.brand-header--big {
+  font-size: 3rem;
+  letter-spacing: -0.02em;
+}
+.brand-header--services {
+  font-size: 1.25rem;
+}
+
+@media (max-width: 900px) {
+  .brand-header--big {
+    font-size: 2rem;
+  }
+  .brand-header--services {
+    font-size: 1rem;
+  }
+}
