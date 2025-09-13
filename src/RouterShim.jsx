@@ -73,7 +73,7 @@ const scrollToSection = (id) => {
               Helping businesses unlock their full potential through smarter systems and data-driven automation.
             </div>
             <div style={{ display: 'flex', justifyContent: 'center', gap: 16, marginBottom: 12, flexWrap: 'wrap' }}>
-              <button onClick={() => navigate('/contact')} style={{ background: 'linear-gradient(90deg,#14ffe9,#0ea5e9)', color: '#181c1f', fontWeight: 700, fontSize: '1.05rem', border: 'none', borderRadius: 8, padding: '0.7rem 1.3rem', cursor: 'pointer', boxShadow: '0 2px 8px #14ffe933' }}>
+              <button onClick={() => { window.location.href = '/contact.html?subject=Book%20a%20Consultation%20for%20a%20Free%20Quote'; }} style={{ background: 'linear-gradient(90deg,#14ffe9,#0ea5e9)', color: '#181c1f', fontWeight: 700, fontSize: '1.05rem', border: 'none', borderRadius: 8, padding: '0.7rem 1.3rem', cursor: 'pointer', boxShadow: '0 2px 8px #14ffe933' }}>
                 Book a Consultation For a Free Quote
               </button>
             </div>
@@ -137,8 +137,8 @@ function NavBar() {
             { label: 'Services', id: 'services', route: '/services' },
             { label: 'Industries', id: 'industries', route: '/industries' },
             { label: 'Accomplishments', id: 'accomplishments', route: '/accomplishments' },
-            { label: 'About', id: 'about', route: '/about' },
-            { label: 'Contact', id: 'contact', route: '/contact' },
+            { label: 'About Us', id: 'about', route: '/about' },
+            { label: 'Contact Us', id: 'contact', route: '/contact' },
           ].map((item) => (
             <button
               key={item.id}

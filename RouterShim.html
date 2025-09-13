@@ -3,26 +3,25 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>iSawyerSolutions</title>
+  <title>Router Shim - iSawyerSolutions</title>
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
   <nav class="nav">
-    <img class="logo" src="/logo.png" alt="logo" onclick="window.scrollTo({top:0,behavior:'smooth'})"/>
+    <img class="logo" src="/logo.png" alt="logo" onclick="location.href='/index.html'"/>
     <div class="links">
       <button class="link" data-href="/index.html">Home</button>
       <button class="link" data-href="/services.html">Services</button>
       <button class="link" data-href="/industries.html">Industries</button>
       <button class="link" data-href="/accomplishments.html">Accomplishments</button>
   <button class="link" data-href="/about.html">About Us</button>
-  <button class="link" data-href="/contact.html">Contact Us</button>
+      <button class="link" data-href="/contact.html">Contact Us</button>
       <button style="border:1px solid var(--accent);color:var(--accent);padding:.3rem .7rem;border-radius:6px" class="link" data-href="/login.html">Client Login</button>
     </div>
   </nav>
-
   <main>
     <section class="hero">
-      <video autoplay muted loop playsinline preload="metadata" poster="/millions saved.png">
+      <video autoplay muted loop playsinline preload="metadata" poster="/millions saved.png" class="hero-video">
         <source src="/typing.mov" type="video/quicktime">
       </video>
       <div class="overlay"></div>
@@ -36,26 +35,6 @@
         </div>
       </div>
     </section>
-
-    <section class="grid">
-      <div class="card">
-        <b>Finance & Payments</b>
-        Payment processing platforms, secure gateways, and resilient transaction systems to reduce downtime and losses.
-      </div>
-      <div class="card">
-        <b>Agriculture & Feed Manufacturing</b>
-        Optimization software for feed formulation and production planning to cut costs and increase yield.
-      </div>
-      <div class="card">
-        <b>Field Services & Inspections</b>
-        Mobile inspection tools, automated reporting, and asset tracking to boost field productivity and reporting accuracy.
-      </div>
-      <div class="card">
-        <b>Construction</b>
-        Project planning, site data capture, safety compliance, and resource scheduling to keep builds on time and under budget.
-      </div>
-    </section>
-
   </main>
 
   <script src="/js/main.js"></script>

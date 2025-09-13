@@ -14,19 +14,38 @@
       <button class="link" data-href="/services.html">Services</button>
       <button class="link" data-href="/industries.html">Industries</button>
       <button class="link" data-href="/accomplishments.html">Accomplishments</button>
-      <button class="link" data-href="/about.html">About</button>
-      <button class="link" data-href="/contact.html">Contact</button>
+  <button class="link" data-href="/about.html">About Us</button>
+  <button class="link" data-href="/contact.html">Contact Us</button>
       <button style="border:1px solid var(--accent);color:var(--accent);padding:.3rem .7rem;border-radius:6px" class="link" data-href="/login.html">Client Login</button>
     </div>
   </nav>
   <main style="padding-top:72px">
     <section class="contact">
-      <h2 style="color:var(--accent);text-align:center">Contact Us</h2>
+  <h2 style="color:var(--accent);text-align:center">Contact Us</h2>
       <form class="contact-form">
-        <input type="text" placeholder="Name" required />
-        <input type="email" placeholder="Email" required />
-        <input type="text" placeholder="Company" />
-        <textarea placeholder="Please type your message inquire here." style="min-height:80px"></textarea>
+        <input type="text" placeholder="Name" name="name" required />
+        <input type="email" placeholder="Email" name="email" required />
+        <input type="text" placeholder="Company" name="company" />
+  <label for="subject" style="display:block;text-align:left;margin:8px 0;color:#b2fefa">Choose One or More Topic(s)</label>
+        <!-- Custom multi-select dropdown -->
+        <div class="multiselect" id="subjectMultiselect" style="margin-bottom:12px">
+          <button type="button" class="multiselect-toggle" aria-haspopup="listbox" aria-expanded="false">
+            <div style="display:flex;align-items:center">
+              <span class="multiselect-placeholder">Choose One or More Topic(s)…</span>
+            </div>
+            <span class="multiselect-arrow">▾</span>
+          </button>
+          <div class="multiselect-options" role="listbox" aria-label="Subject options">
+            <label><input type="checkbox" value="Become a Client" /> Become a Client</label>
+            <label><input type="checkbox" value="Book a Consultation for a Free Quote" /> Book a Consultation for a Free Quote</label>
+            <label><input type="checkbox" value="Services" /> Services</label>
+            <label><input type="checkbox" value="Misc" /> Misc</label>
+          </div>
+        </div>
+  <div class="helper" style="margin-bottom:6px">Click the box to choose one or more topics</div>
+        <!-- hidden input to carry selected subjects for submission -->
+        <input type="hidden" name="subject" id="subject" />
+        <textarea name="message" placeholder="Please type your message inquire here." style="min-height:80px"></textarea>
         <button class="send" type="submit">Send</button>
       </form>
     </section>
