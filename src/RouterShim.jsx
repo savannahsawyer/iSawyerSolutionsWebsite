@@ -73,7 +73,7 @@ const scrollToSection = (id) => {
               Helping businesses unlock their full potential through smarter systems and data-driven automation.
             </div>
             <div style={{ display: 'flex', justifyContent: 'center', gap: 16, marginBottom: 12, flexWrap: 'wrap' }}>
-              <button onClick={() => { window.location.href = '/contact.html?subject=Book%20a%20Consultation%20for%20a%20Free%20Quote'; }} style={{ background: 'linear-gradient(90deg,#14ffe9,#0ea5e9)', color: '#181c1f', fontWeight: 700, fontSize: '1.05rem', border: 'none', borderRadius: 8, padding: '0.7rem 1.3rem', cursor: 'pointer', boxShadow: '0 2px 8px #14ffe933' }}>
+              <button onClick={() => { window.location.href = '/contact.html?subject=Book%20a%20Consultation%20for%20a%20Free%20Quote'; }} style={{ background: 'linear-gradient(90deg,#14ffe9,#0ea5e9)', color: '#181c1f', fontWeight: 800, fontSize: '1.25rem', border: 'none', borderRadius: 10, padding: '0.9rem 1.6rem', cursor: 'pointer', boxShadow: '0 6px 20px #14ffe944', letterSpacing: '0.2px' }}>
                 Book a Consultation For a Free Quote
               </button>
             </div>
@@ -142,11 +142,11 @@ function NavBar() {
           ].map((item) => (
             <button
               key={item.id}
-              style={{
+                style={{
                 background: 'none',
                 color: '#b2fefa',
                 fontWeight: 700,
-                fontSize: '1rem',
+                fontSize: '1.3rem',
                 border: 'none',
                 cursor: 'pointer',
                 textShadow: '0 1px 8px #0ea5e9',
@@ -180,7 +180,7 @@ function NavBar() {
               background: 'none',
               color: '#14ffe9',
               fontWeight: 700,
-              fontSize: '1rem',
+              fontSize: '1.3rem',
               border: '1px solid #14ffe9',
               cursor: 'pointer',
               textShadow: '0 1px 8px #0ea5e9',
