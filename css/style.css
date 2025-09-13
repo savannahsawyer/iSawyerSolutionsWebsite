@@ -58,3 +58,23 @@ body.home .grid{display:none}
 	.brand-header--big{font-size:2rem}
 }
 @media (max-width:520px){.hero h1{font-size:1.6rem}.hero .brand{font-size:2rem}}
+
+/* Mobile-specific nav and layout fixes */
+@media (max-width:520px) {
+	.nav{flex-wrap:wrap;align-items:center;padding:.4rem .6rem;height:auto}
+	.nav img.logo{height:48px}
+	.nav .links{flex-wrap:wrap;gap:6px;justify-content:flex-start}
+	.nav .links button{font-size:1rem;padding:.25rem .5rem}
+	.nav .links button.link{white-space:normal}
+	.nav .links button[style]{flex:0 0 auto}
+
+	/* Ensure hero content fits on small screens */
+	.hero .content{padding:1rem}
+	.hero h1{font-size:1.4rem}
+	.hero .brand{font-size:1.8rem}
+	.hero .sub{font-size:0.95rem}
+	.hero .desc{font-size:0.95rem;padding:0 .4rem}
+
+	/* Prevent horizontal overflow */
+	html,body{overflow-x:hidden}
+}
