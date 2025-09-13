@@ -8,7 +8,7 @@
 </head>
 <body>
   <nav class="nav">
-    <img class="logo" src="/logo.png" alt="logo" onclick="location.href='/index.html'"/>
+  <img class="logo" src="/public/logo.png" alt="logo" onclick="location.href='/index.html'" onerror="this.onerror=null;this.src='/logo.png'" style="display:block"/>
     <div class="links">
       <button class="link" data-href="/index.html">Home</button>
       <button class="link" data-href="/services.html">Services</button>
@@ -22,7 +22,7 @@
 
   <main style="padding-top:72px;display:flex;justify-content:center;">
     <div id="loginCard" style="max-width:520px;width:92%;margin:4rem auto;padding:28px 30px;background:#0a1a2f;border-radius:14px;box-shadow:0 8px 30px rgba(20,255,233,0.06);border:1.5px solid #14ffe9;color:#f8fafc;text-align:center">
-      <img src="/logo.png" alt="iSawyer Logo" style="height:160px;max-width:96%;display:block;margin:0 auto 1.25rem;border-radius:12px" />
+  <img src="/public/logo.png" alt="iSawyer Logo" style="height:160px;max-width:96%;display:block;margin:0 auto 1.25rem;border-radius:12px" onerror="this.onerror=null;this.src='/logo.png'" />
       <h2 style="color:#14ffe9;margin-bottom:18px">Client Login</h2>
 
       <form id="loginForm">

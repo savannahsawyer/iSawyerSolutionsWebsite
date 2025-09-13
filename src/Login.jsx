@@ -85,7 +85,7 @@ export default function Login() {
       color: '#f8fafc',
       textAlign: 'center'
     }}>
-  <img src="/logo.png" alt="iSawyer Logo" style={{height: 180, maxWidth: '98%', display: 'block', margin: '0 auto 1.5rem auto', borderRadius: 14}} />
+            <img src="/public/logo.png" alt="iSawyer Logo" onError={(e)=>{e.currentTarget.onerror=null; e.currentTarget.src='/logo.png'}} style={{height: 180, maxWidth: '98%', display: 'block', margin: '0 auto 1.5rem auto', borderRadius: 14}} />
       <h2 style={{color: '#14ffe9', marginBottom: 18}}>Client Login</h2>
       <form onSubmit={handleSubmit}>
         <input
