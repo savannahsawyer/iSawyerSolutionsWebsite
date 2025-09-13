@@ -47,6 +47,10 @@ main{padding-top:72px}
 .brand-header--big{font-size:3rem}
 .brand-header--services{font-size:1.15rem}
 
+/* Homepage: keep only hero visible and prevent scrolling into the grid */
+body.home main{height:calc(100vh - 72px);overflow:hidden}
+body.home .grid{display:none}
+
 @media (max-width:520px){
 	.hero h1{font-size:1.9rem}
 	.hero .brand{font-size:2.4rem}
