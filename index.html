@@ -1,13 +1,63 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>iSawyerwebsite</title>
-    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>iSawyerSolutions</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <img class="logo" src="/logo.png" alt="logo" onclick="window.scrollTo({top:0,behavior:'smooth'})"/>
+    <div class="links">
+      <button class="link" data-href="/index.html">Home</button>
+      <button class="link" data-href="/services.html">Services</button>
+      <button class="link" data-href="/industries.html">Industries</button>
+      <button class="link" data-href="/accomplishments.html">Accomplishments</button>
+      <button class="link" data-href="/about.html">About</button>
+      <button class="link" data-href="/contact.html">Contact</button>
+      <button style="border:1px solid var(--accent);color:var(--accent);padding:.3rem .7rem;border-radius:6px" class="link" data-href="/login.html">Client Login</button>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <video autoplay muted loop playsinline preload="metadata" poster="/millions saved.png">
+        <source src="/typing.mov" type="video/quicktime">
+      </video>
+      <div class="overlay"></div>
+      <div class="content">
+        <div class="brand">iSawyerSolutions</div>
+        <h1>I saw your solutions<br/>you never imagined possible.</h1>
+        <div class="sub">Efficiency Experts + Automated Data = Maximized Profitability</div>
+        <div class="desc">Helping businesses unlock their full potential through smarter systems and data-driven automation.</div>
+        <div class="cta">
+          <button class="btn-primary link" data-href="/contact.html">Book a Consultation For a Free Quote</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <b>Finance & Payments</b>
+        Payment processing platforms, secure gateways, and resilient transaction systems to reduce downtime and losses.
+      </div>
+      <div class="card">
+        <b>Agriculture & Feed Manufacturing</b>
+        Optimization software for feed formulation and production planning to cut costs and increase yield.
+      </div>
+      <div class="card">
+        <b>Field Services & Inspections</b>
+        Mobile inspection tools, automated reporting, and asset tracking to boost field productivity and reporting accuracy.
+      </div>
+      <div class="card">
+        <b>Construction</b>
+        Project planning, site data capture, safety compliance, and resource scheduling to keep builds on time and under budget.
+      </div>
+    </section>
+
+  </main>
+
+  <script src="/js/main.js"></script>
+</body>
 </html>

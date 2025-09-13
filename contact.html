@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact - iSawyerSolutions</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <img class="logo" src="/logo.png" alt="logo" onclick="location.href='/index.html'"/>
+    <div class="links">
+      <button class="link" data-href="/index.html">Home</button>
+      <button class="link" data-href="/services.html">Services</button>
+      <button class="link" data-href="/industries.html">Industries</button>
+      <button class="link" data-href="/accomplishments.html">Accomplishments</button>
+      <button class="link" data-href="/about.html">About</button>
+      <button class="link" data-href="/contact.html">Contact</button>
+      <button style="border:1px solid var(--accent);color:var(--accent);padding:.3rem .7rem;border-radius:6px" class="link" data-href="/login.html">Client Login</button>
+    </div>
+  </nav>
+  <main style="padding-top:72px">
+    <section class="contact">
+      <h2 style="color:var(--accent);text-align:center">Contact Us</h2>
+      <form class="contact-form">
+        <input type="text" placeholder="Name" required />
+        <input type="email" placeholder="Email" required />
+        <input type="text" placeholder="Company" />
+        <textarea placeholder="Please type your message inquire here." style="min-height:80px"></textarea>
+        <button class="send" type="submit">Send</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>
