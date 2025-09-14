@@ -2,22 +2,61 @@
 *{box-sizing:border-box}
 /* Use `contain` and center the image so the full background is visible */
 body{margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;background:var(--bg) url('/public/background.png') center center/contain no-repeat fixed;color:#b2fefa}
-.nav{width:100vw;background:var(--nav);display:flex;align-items:center;justify-content:space-between;padding:.6rem 1.2rem;box-shadow:0 2px 12px rgba(20,255,233,0.07);position:fixed;top:0;left:0;right:0;height:72px;z-index:9999}
-.nav img.logo{height:64px;border-radius:8px;cursor:pointer}
+/* Ensure homepage does not use the static PNG background (video will be used instead) */
+body.home{background-image:none !important;background-color:var(--bg) !important}
+.nav{width:100vw;background:var(--nav);display:flex;align-items:center;justify-content:space-between;padding:.5rem 1rem;box-shadow:0 2px 12px rgba(20,255,233,0.07);position:fixed;top:0;left:0;right:0;height:56px;z-index:9999}
+.nav img.logo{height:48px;border-radius:8px;cursor:pointer}
 .nav .links{display:flex;gap:8px;align-items:center}
 .nav .links button{background:none;color:#b2fefa;font-weight:700;border:none;cursor:pointer;padding:.3rem .7rem;border-radius:6px;font-size:1.3rem}
-main{padding-top:72px}
-.hero{position:relative;height:calc(100vh - 72px);overflow:hidden}
-.hero{position:relative;height:calc(100vh - 72px);overflow:hidden;background:#000;margin:0;padding:0}
+.main{ /* removed empty rule to avoid lint errors */ }
+main{padding-top:56px}
+.hero{position:relative;height:calc(100vh - 56px);overflow:hidden}
+.hero{position:relative;height:calc(100vh - 56px);overflow:hidden;background:#000;margin:0;padding:0}
 .hero{background-color:transparent;margin:0;padding:0}
 .hero .overlay{position:absolute;inset:0;background:rgba(0,0,0,0.15);z-index:1}
+.hero video.bg{position:fixed;left:50%;top:0;transform:translateX(-50%);height:100vh;width:auto;object-fit:contain;z-index:0;pointer-events:none}
+@media (max-width:520px){
+	.hero video.bg{position:relative;display:block;width:100%;height:auto}
+}
 .hero .content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;text-align:center;padding:0 1rem;margin:0}
-.hero h1{color:#dcdcdc;font-size:3rem;margin:0 0 1rem 0;line-height:1.05}
-.hero .brand{color:var(--accent);font-weight:900;font-size:3.6rem;margin-bottom:.5rem}
-.hero .sub{color:#fff;font-weight:700;font-size:1.6rem;margin-bottom:.75rem}
-.hero .desc{color:#b2fefa;font-size:1.2rem;max-width:920px;margin-bottom:1rem}
-.hero .cta{display:flex;gap:12px}
+
+/* On the homepage, position hero content toward the top (match About page layout) */
+/* Homepage: ensure hero content sits below the smaller nav and headline remains visible */
+body.home .hero .content{justify-content:flex-start;padding-top:56px;height:auto}
+@media (max-width:520px){
+	body.home .hero .content{justify-content:center;padding-top:40px}
+}
+.hero h1{color:#dcdcdc;font-size:2.4rem;margin:0 0 1rem 0;line-height:1.05;display:inline-block;transform:translateY(-24vh);transition:transform .28s ease}
+/* Homepage-specific headline tweaks: reduce how far the h1 is moved up so it's visible under various viewport sizes */
+body.home .hero h1{transform:translateY(-12vh)}
+@media (max-width:520px){ body.home .hero h1{transform:translateY(-8vh)} }
+@media (min-width:900px){ body.home .hero h1{transform:translateY(-18vh)} }
+/* Force H1 visible on the homepage: remove the large negative translate and give a safe top margin */
+body.home .hero h1{transform:none!important;margin-top:18px!important}
+@media (max-width:520px){ body.home .hero h1{transform:none!important;margin-top:10px!important;font-size:1.4rem!important} }
+/* Strong override to ensure headline is visible and on top of the video */
+body.home .hero .content h1, body.home .hero h1{
+	transform:none!important;
+	margin-top:18px!important;
+	position:relative!important;
+	z-index:3!important;
+	color:#e6e6e6!important;
+	text-shadow:0 2px 18px rgba(0,0,0,0.6)!important;
+}
+.hero .brand{color:var(--accent);font-weight:900;font-size:3.6rem;margin-bottom:.5rem;display:inline-block;transform:translateY(6vh);transition:transform .28s ease}
+.hero .sub{color:#fff;font-weight:700;font-size:1.6rem;margin-bottom:.75rem;display:inline-block;transform:translateY(6vh);transition:transform .28s ease}
+.hero .desc{color:#b2fefa;font-size:1.2rem;max-width:920px;margin-bottom:1rem;display:inline-block;transform:translateY(6vh);transition:transform .28s ease}
+.hero .cta{display:flex;gap:12px;transform:translateY(6vh);transition:transform .28s ease}
 .btn-primary{background:linear-gradient(90deg,var(--accent),#0ea5e9);color:#181c1f;padding:.9rem 1.6rem;border-radius:10px;border:none;font-weight:800;cursor:pointer;font-size:1.18rem}
+/* Smaller CTA specifically inside the hero to avoid overlapping nav/logo */
+.hero .btn-primary{padding:.45rem .8rem;font-size:.92rem;border-radius:8px}
+@media (max-width:520px){
+	.hero .btn-primary{padding:.4rem .7rem;font-size:.85rem}
+}
+/* Desktop override: enforce smaller CTA so it doesn't overlap nav/logo */
+@media (min-width:900px){
+	.hero .btn-primary{padding:.32rem .6rem;font-size:.82rem!important;border-radius:6px}
+}
 .contact{max-width:800px;margin:3.5rem auto;padding:1rem}
 .contact form{max-width:400px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
 .contact input,.contact textarea{background:#181c1f;color:#b2fefa;border:1.5px solid var(--accent);border-radius:8px;padding:.7rem 1rem;font-size:1.05rem}
@@ -49,16 +88,27 @@ main{padding-top:72px}
 .brand-header--services{font-size:1.15rem}
 
 /* Homepage: keep only hero visible and prevent scrolling into the grid */
-body.home main{height:calc(100vh - 72px);overflow:hidden}
+/* Allow homepage main to size naturally so hero content (headline) is visible */
+body.home main{height:auto;overflow:auto}
 body.home .grid{display:none}
 
 @media (max-width:520px){
-	.hero h1{font-size:1.9rem}
+	.hero h1{font-size:1.6rem}
 	.hero .brand{font-size:2.4rem}
 	.hero .sub{font-size:1.05rem}
 	.brand-header--big{font-size:2rem}
 }
-@media (max-width:520px){.hero h1{font-size:1.6rem}.hero .brand{font-size:2rem}}
+@media (max-width:520px){.hero h1{font-size:1.2rem}.hero .brand{font-size:2rem}}
+
+/* Adjust h1 vertical offset at breakpoints so only the headline moves up */
+@media (max-width:520px) {
+	.hero h1{transform:translateY(-14vh)}
+	.hero .brand,.hero .sub,.hero .desc,.hero .cta{transform:translateY(3vh)}
+}
+@media (min-width:900px) {
+	.hero h1{transform:translateY(-30vh)}
+	.hero .brand,.hero .sub,.hero .desc,.hero .cta{transform:translateY(8vh)}
+}
 
 /* Mobile-specific nav and layout fixes */
 @media (max-width:520px) {
@@ -84,7 +134,7 @@ body.home .grid{display:none}
 	@media (max-width:520px){
 		.hamburger{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.04);margin-left:8px;cursor:pointer}
 		.hamburger .bar{width:20px;height:2px;background:#b2fefa;margin:3px 0;display:block}
-		.mobile-menu{position:fixed;top:72px;right:12px;left:12px;background:#0a0d12;border-radius:10px;box-shadow:0 8px 30px rgba(0,0,0,0.6);padding:12px;display:none;z-index:10000}
+	.mobile-menu{position:fixed;top:56px;right:12px;left:12px;background:#0a0d12;border-radius:10px;box-shadow:0 8px 30px rgba(0,0,0,0.6);padding:12px;display:none;z-index:10000}
 		.mobile-menu.open{display:block}
 		.mobile-menu .link{display:block;width:100%;text-align:left;padding:.6rem 0;border-bottom:1px solid rgba(255,255,255,0.03);color:#b2fefa;background:transparent;border:none}
 	}

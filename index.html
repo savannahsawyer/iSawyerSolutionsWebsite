@@ -8,7 +8,7 @@
 </head>
 <body class="home">
   <nav class="nav">
-  <img class="logo" src="/public/logo.png" alt="logo" onclick="window.scrollTo({top:0,behavior:'smooth'})" onerror="this.onerror=null;this.src='/logo.png'" style="display:block"/>
+  <img class="logo" src="/public/logo.png?v=2" alt="logo" onclick="window.scrollTo({top:0,behavior:'smooth'})" onerror="this.onerror=null;this.src='/public/logo.png?v=2'" style="display:block"/>
     <div class="links">
       <button class="link" data-href="/index.html">Home</button>
       <button class="link" data-href="/services.html">Services</button>
@@ -22,6 +22,9 @@
 
   <main>
     <section class="hero">
+      <video id="home-bg" class="bg" autoplay muted playsinline preload="auto">
+        <source src="/public/background.mov" type="video/quicktime">
+      </video>
       <div class="overlay"></div>
       <div class="content">
     <h1>I saw your solutions you never imagined possible.</h1>
@@ -33,27 +36,39 @@
       </div>
     </section>
 
-    <section class="grid">
-      <div class="card">
-        <b>Finance & Payments</b>
-        Payment processing platforms, secure gateways, and resilient transaction systems to reduce downtime and losses.
-      </div>
-      <div class="card">
-        <b>Agriculture & Feed Manufacturing</b>
-        Optimization software for feed formulation and production planning to cut costs and increase yield.
-      </div>
-      <div class="card">
-        <b>Field Services & Inspections</b>
-        Mobile inspection tools, automated reporting, and asset tracking to boost field productivity and reporting accuracy.
-      </div>
-      <div class="card">
-        <b>Construction</b>
-        Project planning, site data capture, safety compliance, and resource scheduling to keep builds on time and under budget.
-      </div>
-    </section>
-
   </main>
 
   <script src="/js/main.js"></script>
+  <script>
+    // Ensure the homepage background video plays only once and holds its final frame.
+    // Note: using the existing /public/background.mov (no /pages/ directory found).
+    (function(){
+      const v = document.getElementById('home-bg');
+      if(!v) return;
+      // ensure loop is disabled (in case of attributes or browsers that force it)
+      try{ v.loop = false; v.removeAttribute('loop'); }catch(e){}
+
+      // If metadata isn't loaded yet, wait for it so duration is available
+      function holdFinalFrame(){
+        // Seek just before the end and pause to keep the final frame visible
+        try{
+          if(isFinite(v.duration) && v.duration > 0){
+            v.currentTime = Math.max(0, v.duration - 0.05);
+          }
+        }catch(e){}
+        v.pause();
+      }
+
+      // If the video reaches the end, freeze on the last frame
+      v.addEventListener('ended', ()=>{
+        holdFinalFrame();
+      }, {once:true});
+
+      // As a fallback, when metadata loads ensure we don't loop and attach handlers
+      v.addEventListener('loadedmetadata', ()=>{
+        try{ v.loop = false; }catch(e){}
+      }, {once:true});
+    })();
+  </script>
 </body>
 </html>
