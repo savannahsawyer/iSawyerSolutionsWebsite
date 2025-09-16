@@ -96,6 +96,9 @@ body.home .hero .content h1, body.home .hero h1{
 .contact{max-width:800px;margin:3.5rem auto;padding:1rem}
 .contact form{max-width:400px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
 .contact input,.contact textarea{background:#181c1f;color:var(--text);border:1.5px solid var(--accent);border-radius:8px;padding:.7rem 1rem;font-size:1.05rem}
+/* Unify hint colors: placeholders, subject label, and helper text */
+.contact input::placeholder,.contact textarea::placeholder{color:#cfd4da;opacity:1}
+label[for="subject"], .contact .helper, .multiselect .multiselect-placeholder{color:#cfd4da !important}
 /* styled select to match inputs */
 .contact .form-select{background:#181c1f;color:var(--text);border:1.5px solid var(--accent);border-radius:8px;padding:.7rem 1rem;font-size:1.05rem;appearance:none}
 
