@@ -27,7 +27,7 @@ body{
 	/* Keep the page background solid; put the image on the hero only so it starts under the ribbon */
 	body.home{background:var(--bg)!important}
 		body.home .hero{
-			background-image:linear-gradient(rgba(10,13,18,0.5), rgba(10,13,18,0.5)), url('/public/background.png?v=20250916-1213');
+			background-image:linear-gradient(rgba(10,13,18,0.5), rgba(10,13,18,0.5)), url('/public/background.png?v=20250916-3');
 		background-position:center center;
 		background-size:cover;
 		background-repeat:no-repeat;
