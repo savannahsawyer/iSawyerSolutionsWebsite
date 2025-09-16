@@ -35,15 +35,24 @@ document.addEventListener('DOMContentLoaded', function(){
     }
   }catch(e){/* ignore */}
 
-  // Highlight the active nav link (desktop)
+  // Highlight the active nav link (desktop) with normalized paths
   try{
-    const path = window.location.pathname.replace(/\/$/, '') || '/index.html';
-    const matchers = [path];
-    if(path === '/' || path === '') matchers.push('/index.html');
+    function normalize(p){
+      if(!p) return '/index';
+      p = p.split('?')[0].split('#')[0];
+      p = p.replace(/\/$/, '');
+      if(p === '' || p === '/') return '/index';
+      // remove .html extension
+      p = p.replace(/\.html$/i, '');
+      return p;
+    }
+    const current = normalize(window.location.pathname);
     const navBtns = document.querySelectorAll('.nav .links .link');
     navBtns.forEach(b=>{
       const href = b.getAttribute('data-href');
-      if(href && matchers.includes(href)){
+      if(!href) return;
+      const target = normalize(href);
+      if(target === current){
         b.classList.add('active');
       }
     });
@@ -206,14 +215,22 @@ document.addEventListener('DOMContentLoaded', function(){
   nav.appendChild(hamb);
   document.body.appendChild(menu);
 
-  // After injecting, also highlight active in mobile menu
+  // After injecting, also highlight active in mobile menu (normalized)
   try{
-    const path = window.location.pathname.replace(/\/$/, '') || '/index.html';
-    const matchers = [path];
-    if(path === '/' || path === '') matchers.push('/index.html');
+    function normalize(p){
+      if(!p) return '/index';
+      p = p.split('?')[0].split('#')[0];
+      p = p.replace(/\/$/, '');
+      if(p === '' || p === '/') return '/index';
+      p = p.replace(/\.html$/i, '');
+      return p;
+    }
+    const current = normalize(window.location.pathname);
     menu.querySelectorAll('.link').forEach(b=>{
       const href = b.getAttribute('data-href');
-      if(href && matchers.includes(href)) b.classList.add('active');
+      if(!href) return;
+      const target = normalize(href);
+      if(target === current) b.classList.add('active');
     });
   }catch(e){/* ignore */}
 })();
