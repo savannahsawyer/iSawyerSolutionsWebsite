@@ -144,11 +144,15 @@ document.addEventListener('DOMContentLoaded', function(){
   const hamb = document.createElement('button');
   hamb.className = 'hamburger';
   hamb.setAttribute('aria-label','Open menu');
+  hamb.setAttribute('aria-expanded','false');
   hamb.innerHTML = '<span class="bar"></span><span class="bar"></span><span class="bar"></span>';
 
   // Create mobile menu container
   const menu = document.createElement('div');
   menu.className = 'mobile-menu';
+  menu.id = 'mobileMenu';
+  menu.setAttribute('role','menu');
+  hamb.setAttribute('aria-controls','mobileMenu');
 
   // Clone nav links into the mobile menu
   const links = nav.querySelector('.links');
@@ -165,13 +169,36 @@ document.addEventListener('DOMContentLoaded', function(){
 
   hamb.addEventListener('click', function(e){
     e.stopPropagation();
-    menu.classList.toggle('open');
+    const isOpen = menu.classList.toggle('open');
+    hamb.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
   });
 
   // Close menu on outside click
   document.addEventListener('click', function(ev){
     if(!menu.contains(ev.target) && !hamb.contains(ev.target)){
       menu.classList.remove('open');
+      hamb.setAttribute('aria-expanded','false');
+    }
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', function(ev){
+    if(ev.key === 'Escape'){
+      menu.classList.remove('open');
+      hamb.setAttribute('aria-expanded','false');
+    }
+  });
+
+  // Handle clicks on mobile menu items
+  menu.addEventListener('click', function(ev){
+    const btn = ev.target.closest('.link');
+    if(btn){
+      const href = btn.getAttribute('data-href');
+      if(href){
+        menu.classList.remove('open');
+        hamb.setAttribute('aria-expanded','false');
+        window.location.href = href;
+      }
     }
   });
 
