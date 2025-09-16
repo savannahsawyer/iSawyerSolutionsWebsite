@@ -1,7 +1,7 @@
 :root{--accent:#14ffe9;--bg:#0a0d12;--nav:#181c1f}
 *{box-sizing:border-box}
-/* Use `contain` and center the image so the full background is visible */
-body{margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;background:var(--bg) url('/public/blankBackground.png') center center/contain no-repeat fixed;color:#b2fefa}
+/* Non-home default: fill the screen (no side bars) */
+body{margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;background:var(--bg) url('/public/blankBackground.png') center center/cover no-repeat fixed;color:#b2fefa}
 /* Homepage background (desktop): fill the hero under the ribbon with the image (no bands) */
 @media (min-width:900px){
 	/* Keep the page background solid; put the image on the hero only so it starts under the ribbon */
