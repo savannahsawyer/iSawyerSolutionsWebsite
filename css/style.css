@@ -25,7 +25,7 @@ body{
 /* Mobile homepage background: use dedicated image on phones */
 @media (max-width:520px){
 	body.home{
-		background-image: linear-gradient(rgba(10,13,18,0.5), rgba(10,13,18,0.5)), url('/public/mobileBackground.png');
+		background-image: linear-gradient(rgba(10,13,18,0.5), rgba(10,13,18,0.5)), url('/public/mobileBackground.png?v=20250916-2');
 		background-position: center center;
 		background-size: cover;
 		background-repeat: no-repeat;
@@ -231,4 +231,7 @@ body.home .grid{display:none}
 
 	/* Move homepage CTA below the eye on phones */
 	body.home .hero .cta{transform:none!important;margin-top:36vh}
+
+	/* Nudge homepage description down slightly on phones */
+	body.home .hero .desc{transform:translateY(5vh)!important}
 	}
