@@ -2,36 +2,13 @@
 *{box-sizing:border-box}
 /* Use `contain` and center the image so the full background is visible */
 body{margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;background:var(--bg) url('/public/blankBackground.png') center center/contain no-repeat fixed;color:#b2fefa}
-/* Homepage background (desktop): show the full image (contain) while still filling the viewport with a blurred cover behind it */
+/* Homepage background (desktop): fill the hero under the ribbon with the image (no bands) */
 @media (min-width:900px){
-	/* Remove the zoomed-in cover from body and keep only the solid background color */
+	/* Keep the page background solid; put the image on the hero only so it starts under the ribbon */
 	body.home{background:var(--bg)!important}
-
-	/* Two-layer background inside the hero:
-		 - ::before: blurred, cover layer to fill the screen
-		 - ::after: crisp, contain layer to show the entire image without cropping */
-	body.home .hero::before{
-		content:"";
-		position:fixed;
-		inset:0;
+	body.home .hero{
 		background:url('/public/background.png?v=20250916-1213') center center/cover no-repeat;
-		filter:blur(16px) brightness(0.85);
-		transform:scale(1.06); /* hide blur edges */
-		z-index:0;
-		pointer-events:none;
 	}
-	body.home .hero::after{
-		content:"";
-		position:fixed;
-		inset:0;
-		background:url('/public/background.png?v=20250916-1213') center center/contain no-repeat;
-		z-index:1;
-		pointer-events:none;
-	}
-
-	/* Ensure overlay/content stay above the background layers */
-	body.home .hero .overlay{z-index:2}
-	body.home .hero .content{z-index:3}
 }
 .nav{width:100vw;background:var(--nav);display:flex;align-items:center;justify-content:space-between;padding:.5rem 1rem;box-shadow:0 2px 12px rgba(20,255,233,0.07);position:fixed;top:0;left:0;right:0;height:56px;z-index:9999}
 .nav img.logo{height:48px;border-radius:8px;cursor:pointer}
@@ -39,8 +16,7 @@ body{margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, '
 .nav .links button{background:none;color:#b2fefa;font-weight:700;border:none;cursor:pointer;padding:.3rem .7rem;border-radius:6px;font-size:1.3rem}
 main{padding-top:56px}
 .hero{position:relative;height:calc(100vh - 56px);overflow:hidden;margin:0;padding:0}
-/* Ensure the hero does not cover the body background */
-body.home .hero{background:transparent !important}
+/* Allow hero to render its own background image on homepage (no forced transparent) */
 .hero .overlay{position:absolute;inset:0;background:rgba(0,0,0,0.15);z-index:1}
 .hero video.bg{position:fixed;left:50%;top:0;transform:translateX(-50%);height:100vh;width:auto;object-fit:contain;z-index:0;pointer-events:none}
 @media (max-width:520px){
