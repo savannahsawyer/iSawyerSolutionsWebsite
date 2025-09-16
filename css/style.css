@@ -147,7 +147,11 @@ label[for="subject"], .contact .helper, .multiselect .multiselect-placeholder{co
 .contact .multiselect .multiselect-toggle:hover{box-shadow:0 6px 18px rgba(var(--accent-rgb),0.06)}
 .contact button.send{background:linear-gradient(90deg, rgba(var(--accent-rgb),0.75), rgba(var(--accent-rgb),0.55)); color:#0f1418}
 /* Login page theming overrides (win over inline styles) */
-#loginCard{border-color:var(--accent)!important;box-shadow:0 8px 30px rgba(var(--accent-rgb),0.06)!important}
+#loginCard{
+	background:#1f2622 !important; /* greenish-grey */
+	border-color:rgba(207,224,90,0.35) !important; /* softened yellow-green */
+	box-shadow:0 10px 36px rgba(0,0,0,0.5) !important;
+}
 #loginCard h2{color:var(--accent)!important}
 #loginForm input{background:#181c1f!important;color:var(--text)!important;border:1.5px solid var(--accent)!important;border-radius:8px!important}
 #loginForm button[type="submit"]{background:linear-gradient(90deg,var(--accent),var(--accent-2))!important;color:#181c1f!important;border:none!important;border-radius:8px!important;font-weight:700!important}
@@ -198,10 +202,9 @@ body.home .grid{display:none}
 @media (max-width:520px) {
 	.nav{flex-wrap:wrap;align-items:center;padding:.4rem .6rem;height:auto}
 	.nav img.logo{height:48px}
-	.nav .links{flex-wrap:wrap;gap:6px;justify-content:flex-start}
-	.nav .links button{font-size:1rem;padding:.25rem .5rem}
-	.nav .links button.link{white-space:normal}
-	.nav .links button[style]{flex:0 0 auto}
+	/* Hide inline nav links on phones; use hamburger menu instead */
+	.nav .links{display:none}
+	.nav .links button{display:none}
 
 	/* Ensure hero content fits on small screens */
 	.hero .content{padding:1rem}
