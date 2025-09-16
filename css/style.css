@@ -230,5 +230,5 @@ body.home .grid{display:none}
 	.hero .btn-primary{box-shadow:0 6px 20px rgba(174,226,106,0.22)!important}
 
 	/* Move homepage CTA below the eye on phones */
-	body.home .hero .cta{transform:none!important;margin-top:28vh}
+	body.home .hero .cta{transform:none!important;margin-top:36vh}
 	}
