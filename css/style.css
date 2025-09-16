@@ -33,6 +33,19 @@ body{
 		background-repeat:no-repeat;
 	}
 }
+
+/* Floating logo at bottom-right on desktop */
+@media (min-width:900px){
+	.floating-logo{
+		position:fixed;
+		right:20px;
+		bottom:20px;
+		width:120px;
+		height:auto;
+		z-index:9000;
+		pointer-events:none; /* don’t block clicks */
+	}
+}
 .nav{width:100vw;background:var(--nav);display:flex;align-items:center;justify-content:space-between;padding:.5rem 1rem;box-shadow:0 2px 12px rgba(174,226,106,0.07);position:fixed;top:0;left:0;right:0;height:56px;z-index:9999}
 .nav img.logo{height:48px;border-radius:8px;cursor:pointer}
 .nav .links{display:flex;gap:8px;align-items:center}

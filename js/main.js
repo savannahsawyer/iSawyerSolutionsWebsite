@@ -7,6 +7,34 @@ document.addEventListener('DOMContentLoaded', function(){
     });
   });
 
+  // Add floating logo at bottom-right on desktop; keep it responsive to resizes
+  try{
+    const mq = window.matchMedia ? window.matchMedia('(min-width: 900px)') : null;
+    function ensureFloatingLogo(){
+      const existing = document.querySelector('.floating-logo');
+      if(mq && mq.matches){
+        if(!existing){
+          const img = document.createElement('img');
+          img.src = '/public/logo.png?v=20250916-3';
+          img.alt = 'iSawyer Solutions Logo';
+          img.className = 'floating-logo';
+          img.loading = 'lazy';
+          document.body.appendChild(img);
+        }
+      } else if(existing){
+        existing.remove();
+      }
+    }
+    ensureFloatingLogo();
+    if(mq){
+      if(typeof mq.addEventListener === 'function'){
+        mq.addEventListener('change', ensureFloatingLogo);
+      } else if(typeof mq.addListener === 'function'){
+        mq.addListener(ensureFloatingLogo); // Safari fallback
+      }
+    }
+  }catch(e){/* ignore */}
+
   // Highlight the active nav link (desktop)
   try{
     const path = window.location.pathname.replace(/\/$/, '') || '/index.html';
