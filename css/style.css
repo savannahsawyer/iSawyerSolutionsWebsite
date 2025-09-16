@@ -1,13 +1,26 @@
 :root{--accent:#14ffe9;--bg:#0a0d12;--nav:#181c1f}
 *{box-sizing:border-box}
-/* Non-home default: fill the screen (no side bars) */
-body{margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;background:var(--bg) url('/public/blankBackground.png') center center/cover no-repeat fixed;color:#b2fefa}
+/* Global background: image at ~20% visibility via dark overlay */
+body{
+	margin:0;
+	font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+	color:#b2fefa;
+	background-color:var(--bg);
+	background-image:linear-gradient(rgba(10,13,18,0.8), rgba(10,13,18,0.8)), url('/public/blankBackground.png');
+	background-position:center center;
+	background-size:cover;
+	background-repeat:no-repeat;
+	background-attachment:fixed;
+}
 /* Homepage background (desktop): fill the hero under the ribbon with the image (no bands) */
 @media (min-width:900px){
 	/* Keep the page background solid; put the image on the hero only so it starts under the ribbon */
 	body.home{background:var(--bg)!important}
 	body.home .hero{
-		background:url('/public/background.png?v=20250916-1213') center center/cover no-repeat;
+		background-image:linear-gradient(rgba(10,13,18,0.8), rgba(10,13,18,0.8)), url('/public/background.png?v=20250916-1213');
+		background-position:center center;
+		background-size:cover;
+		background-repeat:no-repeat;
 	}
 }
 .nav{width:100vw;background:var(--nav);display:flex;align-items:center;justify-content:space-between;padding:.5rem 1rem;box-shadow:0 2px 12px rgba(20,255,233,0.07);position:fixed;top:0;left:0;right:0;height:56px;z-index:9999}
@@ -18,6 +31,10 @@ main{padding-top:56px}
 .hero{position:relative;height:calc(100vh - 56px);overflow:hidden;margin:0;padding:0}
 /* Allow hero to render its own background image on homepage (no forced transparent) */
 .hero .overlay{position:absolute;inset:0;background:rgba(0,0,0,0.15);z-index:1}
+/* Homepage already darkens background to 20%; prevent extra darkening */
+@media (min-width:900px){
+	body.home .hero .overlay{background:transparent!important}
+}
 .hero video.bg{position:fixed;left:50%;top:0;transform:translateX(-50%);height:100vh;width:auto;object-fit:contain;z-index:0;pointer-events:none}
 @media (max-width:520px){
 	.hero video.bg{position:relative;display:block;width:100%;height:auto}
