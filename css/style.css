@@ -1,10 +1,16 @@
-:root{--accent:#14ffe9;--bg:#0a0d12;--nav:#181c1f}
+:root{
+	--accent:#aee26a; /* yellow-green */
+	--accent-2:#6fbe3a; /* deeper yellow-green */
+	--text:#e6e6e6; /* neutral light text */
+	--bg:#0a0d12;
+	--nav:#181c1f;
+}
 *{box-sizing:border-box}
 /* Global background: image at ~20% visibility via dark overlay */
 body{
 	margin:0;
 	font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-	color:#b2fefa;
+	color:var(--text);
 	background-color:var(--bg);
 		background-image:linear-gradient(rgba(10,13,18,0.5), rgba(10,13,18,0.5)), url('/public/blankBackground.png');
 	background-position:center center;
@@ -23,10 +29,10 @@ body{
 		background-repeat:no-repeat;
 	}
 }
-.nav{width:100vw;background:var(--nav);display:flex;align-items:center;justify-content:space-between;padding:.5rem 1rem;box-shadow:0 2px 12px rgba(20,255,233,0.07);position:fixed;top:0;left:0;right:0;height:56px;z-index:9999}
+.nav{width:100vw;background:var(--nav);display:flex;align-items:center;justify-content:space-between;padding:.5rem 1rem;box-shadow:0 2px 12px rgba(174,226,106,0.07);position:fixed;top:0;left:0;right:0;height:56px;z-index:9999}
 .nav img.logo{height:48px;border-radius:8px;cursor:pointer}
 .nav .links{display:flex;gap:8px;align-items:center}
-.nav .links button{background:none;color:#b2fefa;font-weight:700;border:none;cursor:pointer;padding:.3rem .7rem;border-radius:6px;font-size:1.3rem}
+.nav .links button{background:none;color:var(--text);font-weight:700;border:none;cursor:pointer;padding:.3rem .7rem;border-radius:6px;font-size:1.3rem}
 main{padding-top:56px}
 .hero{position:relative;height:calc(100vh - 56px);overflow:hidden;margin:0;padding:0}
 /* Allow hero to render its own background image on homepage (no forced transparent) */
@@ -66,9 +72,9 @@ body.home .hero .content h1, body.home .hero h1{
 }
 .hero .brand{color:var(--accent);font-weight:900;font-size:3.6rem;margin-bottom:.5rem;display:inline-block;transform:translateY(6vh);transition:transform .28s ease}
 .hero .sub{color:#fff;font-weight:700;font-size:1.6rem;margin-bottom:.75rem;display:inline-block;transform:translateY(6vh);transition:transform .28s ease}
-.hero .desc{color:#b2fefa;font-size:1.2rem;max-width:920px;margin-bottom:1rem;display:inline-block;transform:translateY(6vh);transition:transform .28s ease}
+.hero .desc{color:var(--text);font-size:1.2rem;max-width:920px;margin-bottom:1rem;display:inline-block;transform:translateY(6vh);transition:transform .28s ease}
 .hero .cta{display:flex;gap:12px;transform:translateY(6vh);transition:transform .28s ease}
-.btn-primary{background:linear-gradient(90deg,var(--accent),#0ea5e9);color:#181c1f;padding:.9rem 1.6rem;border-radius:10px;border:none;font-weight:800;cursor:pointer;font-size:1.18rem}
+.btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#181c1f;padding:.9rem 1.6rem;border-radius:10px;border:none;font-weight:800;cursor:pointer;font-size:1.18rem}
 /* Smaller CTA specifically inside the hero to avoid overlapping nav/logo */
 .hero .btn-primary{padding:.45rem .8rem;font-size:.92rem;border-radius:8px}
 @media (max-width:520px){
@@ -80,25 +86,25 @@ body.home .hero .content h1, body.home .hero h1{
 }
 .contact{max-width:800px;margin:3.5rem auto;padding:1rem}
 .contact form{max-width:400px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
-.contact input,.contact textarea{background:#181c1f;color:#b2fefa;border:1.5px solid var(--accent);border-radius:8px;padding:.7rem 1rem;font-size:1.05rem}
+.contact input,.contact textarea{background:#181c1f;color:var(--text);border:1.5px solid var(--accent);border-radius:8px;padding:.7rem 1rem;font-size:1.05rem}
 /* styled select to match inputs */
-.contact .form-select{background:#181c1f;color:#b2fefa;border:1.5px solid var(--accent);border-radius:8px;padding:.7rem 1rem;font-size:1.05rem;appearance:none}
+.contact .form-select{background:#181c1f;color:var(--text);border:1.5px solid var(--accent);border-radius:8px;padding:.7rem 1rem;font-size:1.05rem;appearance:none}
 
 /* Multiselect custom dropdown */
 .multiselect{position:relative}
-.multiselect .multiselect-toggle{width:100%;text-align:left;background:#181c1f;color:#b2fefa;border:1.5px solid var(--accent);padding:.7rem 1rem;border-radius:8px;font-size:1.05rem;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
-.multiselect .multiselect-toggle:focus{outline:2px solid rgba(20,255,233,0.25)}
+.multiselect .multiselect-toggle{width:100%;text-align:left;background:#181c1f;color:var(--text);border:1.5px solid var(--accent);padding:.7rem 1rem;border-radius:8px;font-size:1.05rem;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
+.multiselect .multiselect-toggle:focus{outline:2px solid rgba(174,226,106,0.25)}
 .multiselect .multiselect-options{display:none;position:absolute;left:0;right:0;z-index:50;background:#0a0d12;border:1px solid rgba(255,255,255,0.04);box-shadow:0 8px 24px rgba(0,0,0,0.6);margin-top:8px;padding:12px;border-radius:8px}
-.multiselect .multiselect-options label{display:block;padding:6px 4px;color:#b2fefa;cursor:pointer}
+.multiselect .multiselect-options label{display:block;padding:6px 4px;color:var(--text);cursor:pointer}
 .multiselect .multiselect-options input[type="checkbox"]{margin-right:8px}
 .multiselect .multiselect-arrow{opacity:0.9;margin-left:8px}
 .multiselect.open .multiselect-options{display:block}
-.multiselect .multiselect-placeholder{color:#b2fefa}
-.multiselect .multiselect-toggle:hover{box-shadow:0 6px 18px rgba(14,165,233,0.08);transform:translateY(-1px);transition:all .14s ease}
+.multiselect .multiselect-placeholder{color:var(--text)}
+.multiselect .multiselect-toggle:hover{box-shadow:0 6px 18px rgba(174,226,106,0.1);transform:translateY(-1px);transition:all .14s ease}
 .multiselect .multiselect-arrow{transition:transform .16s ease}
 .multiselect.open .multiselect-arrow{transform:rotate(180deg)}
-.multiselect .helper{font-size:0.85rem;color:#8ee6dd;margin-top:6px}
-.contact button.send{background:linear-gradient(90deg,var(--accent),#0ea5e9);color:#181c1f;padding:.7rem 1.5rem;border-radius:8px;border:none;font-weight:700;cursor:pointer;width:100%;box-sizing:border-box}
+.multiselect .helper{font-size:0.85rem;color:#cfe9a8;margin-top:6px}
+.contact button.send{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#181c1f;padding:.7rem 1.5rem;border-radius:8px;border:none;font-weight:700;cursor:pointer;width:100%;box-sizing:border-box}
 .panel{background:rgba(10,13,18,0.88); /* near-opaque */
 	border:1px solid rgba(255,255,255,0.06);
 	border-radius:12px;
@@ -107,11 +113,11 @@ body.home .hero .content h1, body.home .hero h1{
 	backdrop-filter:saturate(110%);
 }
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;max-width:1100px;margin:0 auto;padding:2.5rem 1rem}
-.card{background:#181c1f;color:#fff;border-radius:12px;padding:1.2rem 1.3rem;box-shadow:0 2px 12px rgba(20,255,233,0.1)}
+.card{background:#181c1f;color:#fff;border-radius:12px;padding:1.2rem 1.3rem;box-shadow:0 2px 12px rgba(174,226,106,0.1)}
 .card b{display:block;margin-bottom:.6rem}
 
 /* Brand header used on non-home pages */
-.brand-header{color:var(--accent);font-weight:900;text-align:center;margin:0 0 0.6rem 0;text-shadow:0 2px 8px rgba(14,165,233,0.25);font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial}
+.brand-header{color:var(--accent);font-weight:900;text-align:center;margin:0 0 0.6rem 0;text-shadow:0 2px 8px rgba(174,226,106,0.18);font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial}
 .brand-header--big{font-size:3rem}
 .brand-header--services{font-size:1.15rem}
 
@@ -161,8 +167,18 @@ body.home .grid{display:none}
 	/* Hamburger menu (mobile only) */
 	@media (max-width:520px){
 		.hamburger{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.04);margin-left:8px;cursor:pointer}
-		.hamburger .bar{width:20px;height:2px;background:#b2fefa;margin:3px 0;display:block}
+		.hamburger .bar{width:20px;height:2px;background:var(--text);margin:3px 0;display:block}
 	.mobile-menu{position:fixed;top:56px;right:12px;left:12px;background:#0a0d12;border-radius:10px;box-shadow:0 8px 30px rgba(0,0,0,0.6);padding:12px;display:none;z-index:10000}
 		.mobile-menu.open{display:block}
-		.mobile-menu .link{display:block;width:100%;text-align:left;padding:.6rem 0;border-bottom:1px solid rgba(255,255,255,0.03);color:#b2fefa;background:transparent;border:none}
+		.mobile-menu .link{display:block;width:100%;text-align:left;padding:.6rem 0;border-bottom:1px solid rgba(255,255,255,0.03);color:var(--text);background:transparent;border:none}
+
+	/* Override specific inline-styled buttons to match new palette */
+	#loginCard{border-color:var(--accent)!important;box-shadow:0 8px 30px rgba(174,226,106,0.06)!important}
+	#loginCard button{background:linear-gradient(90deg,var(--accent),var(--accent-2))!important;color:#181c1f!important;border:none!important}
+	#requestAccountBtn{background:linear-gradient(90deg,var(--accent),var(--accent-2))!important;color:#181c1f!important;border:none!important}
+	#backToLogin{background:linear-gradient(90deg,var(--accent),var(--accent-2))!important;color:#fff!important}
+	#forgotBtn{color:var(--accent)!important}
+
+	/* Harmonize CTA shadow color on homepage */
+	.hero .btn-primary{box-shadow:0 6px 20px rgba(174,226,106,0.22)!important}
 	}
