@@ -22,6 +22,16 @@ body{
 	background-repeat:no-repeat;
 	background-attachment:fixed;
 }
+/* Mobile homepage background: use dedicated image on phones */
+@media (max-width:520px){
+	body.home{
+		background-image: linear-gradient(rgba(10,13,18,0.5), rgba(10,13,18,0.5)), url('/public/mobileBackground.png');
+		background-position: center center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-attachment: scroll; /* avoid jank on mobile */
+	}
+}
 /* Homepage background (desktop): fill the hero under the ribbon with the image (no bands) */
 @media (min-width:900px){
 	/* Keep the page background solid; put the image on the hero only so it starts under the ribbon */
