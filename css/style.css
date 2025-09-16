@@ -1,18 +1,18 @@
 :root{--accent:#14ffe9;--bg:#0a0d12;--nav:#181c1f}
 *{box-sizing:border-box}
 /* Use `contain` and center the image so the full background is visible */
-body{margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;background:var(--bg) url('/public/background.png') center center/contain no-repeat fixed;color:#b2fefa}
+body{margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;background:var(--bg) url('/public/blankBackground.png') center center/contain no-repeat fixed;color:#b2fefa}
 /* Ensure homepage does not use the static PNG background (video will be used instead) */
-body.home{background-image:none !important;background-color:var(--bg) !important}
+/* Homepage should use the PNG background */
+body.home{background:var(--bg) url('/public/background.png') center center/cover no-repeat fixed !important}
 .nav{width:100vw;background:var(--nav);display:flex;align-items:center;justify-content:space-between;padding:.5rem 1rem;box-shadow:0 2px 12px rgba(20,255,233,0.07);position:fixed;top:0;left:0;right:0;height:56px;z-index:9999}
 .nav img.logo{height:48px;border-radius:8px;cursor:pointer}
 .nav .links{display:flex;gap:8px;align-items:center}
 .nav .links button{background:none;color:#b2fefa;font-weight:700;border:none;cursor:pointer;padding:.3rem .7rem;border-radius:6px;font-size:1.3rem}
-.main{ /* removed empty rule to avoid lint errors */ }
 main{padding-top:56px}
-.hero{position:relative;height:calc(100vh - 56px);overflow:hidden}
-.hero{position:relative;height:calc(100vh - 56px);overflow:hidden;background:#000;margin:0;padding:0}
-.hero{background-color:transparent;margin:0;padding:0}
+.hero{position:relative;height:calc(100vh - 56px);overflow:hidden;margin:0;padding:0}
+/* Ensure the hero does not cover the body background */
+body.home .hero{background:transparent !important}
 .hero .overlay{position:absolute;inset:0;background:rgba(0,0,0,0.15);z-index:1}
 .hero video.bg{position:fixed;left:50%;top:0;transform:translateX(-50%);height:100vh;width:auto;object-fit:contain;z-index:0;pointer-events:none}
 @media (max-width:520px){
