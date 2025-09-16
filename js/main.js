@@ -7,6 +7,20 @@ document.addEventListener('DOMContentLoaded', function(){
     });
   });
 
+  // Highlight the active nav link (desktop)
+  try{
+    const path = window.location.pathname.replace(/\/$/, '') || '/index.html';
+    const matchers = [path];
+    if(path === '/' || path === '') matchers.push('/index.html');
+    const navBtns = document.querySelectorAll('.nav .links .link');
+    navBtns.forEach(b=>{
+      const href = b.getAttribute('data-href');
+      if(href && matchers.includes(href)){
+        b.classList.add('active');
+      }
+    });
+  }catch(e){/* ignore */}
+
   // No video fade logic: show the video directly (preload=auto used in index.html)
 
   // Basic contact form handler (no backend) — show a thank-you message
@@ -136,4 +150,15 @@ document.addEventListener('DOMContentLoaded', function(){
   // Insert hamburger and menu into nav
   nav.appendChild(hamb);
   document.body.appendChild(menu);
+
+  // After injecting, also highlight active in mobile menu
+  try{
+    const path = window.location.pathname.replace(/\/$/, '') || '/index.html';
+    const matchers = [path];
+    if(path === '/' || path === '') matchers.push('/index.html');
+    menu.querySelectorAll('.link').forEach(b=>{
+      const href = b.getAttribute('data-href');
+      if(href && matchers.includes(href)) b.classList.add('active');
+    });
+  }catch(e){/* ignore */}
 })();

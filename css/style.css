@@ -1,9 +1,13 @@
 :root{
 	--accent:#aee26a; /* yellow-green */
 	--accent-2:#6fbe3a; /* deeper yellow-green */
+	--accent-rgb:174,226,106; /* for subtle rgba tints */
 	--text:#e6e6e6; /* neutral light text */
 	--bg:#0a0d12;
 	--nav:#181c1f;
+	/* coordinated nav link tints (not exact accent for readability) */
+	--nav-link:#cfe9a8;
+	--nav-link-hover:#e7f6d1;
 }
 *{box-sizing:border-box}
 /* Global background: image at ~20% visibility via dark overlay */
@@ -32,7 +36,12 @@ body{
 .nav{width:100vw;background:var(--nav);display:flex;align-items:center;justify-content:space-between;padding:.5rem 1rem;box-shadow:0 2px 12px rgba(174,226,106,0.07);position:fixed;top:0;left:0;right:0;height:56px;z-index:9999}
 .nav img.logo{height:48px;border-radius:8px;cursor:pointer}
 .nav .links{display:flex;gap:8px;align-items:center}
-.nav .links button{background:none;color:var(--text);font-weight:700;border:none;cursor:pointer;padding:.3rem .7rem;border-radius:6px;font-size:1.3rem}
+.nav .links button{background:none;color:var(--nav-link);font-weight:700;border:none;cursor:pointer;padding:.3rem .7rem;border-radius:6px;font-size:1.3rem;text-shadow:0 1px 8px rgba(var(--accent-rgb),0.12);border-bottom:3px solid transparent;padding-bottom:3px}
+/* hover/focus states for coordinated link color */
+.nav .links button:hover{color:var(--nav-link-hover)}
+.nav .links button:focus-visible{outline:2px solid rgba(var(--accent-rgb),0.35);outline-offset:2px}
+/* active page indicator: colored text + underline */
+.nav .links button.active{color:var(--accent);border-bottom-color:var(--accent-2);border-radius:0}
 main{padding-top:56px}
 .hero{position:relative;height:calc(100vh - 56px);overflow:hidden;margin:0;padding:0}
 /* Allow hero to render its own background image on homepage (no forced transparent) */
