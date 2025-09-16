@@ -206,6 +206,11 @@ body.home .grid{display:none}
 	.nav .links{display:none}
 	.nav .links button{display:none}
 
+	/* Login page: keep actions from overflowing */
+	.login-actions{flex-wrap:wrap !important;gap:8px !important}
+	.login-actions #requestAccountBtn{flex:1 1 100% !important;max-width:100% !important}
+	.login-actions #forgotBtn{white-space:normal !important;word-break:break-word}
+
 	/* Ensure hero content fits on small screens */
 	.hero .content{padding:1rem}
 	.hero h1{font-size:1.4rem}
