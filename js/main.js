@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
   // No video fade logic: show the video directly (preload=auto used in index.html)
 
-  // Basic contact form handler (no backend) — show a thank-you message
+  // Contact form handler — send via EmailJS
   const form = document.querySelector('form.contact-form');
   if(form){
     // setup custom multiselect if present
@@ -116,29 +116,56 @@ document.addEventListener('DOMContentLoaded', function(){
       const btn = form.querySelector('button[type=submit]');
       btn.disabled = true;
       btn.textContent = 'Sending...';
-      setTimeout(()=>{
-        btn.textContent = 'Send';
+
+      // gather selected subjects from multiselect or select
+      const hidden = form.querySelector('#subject');
+      let subjectVal = 'General';
+      if(hidden){
+        const multiChecks = document.querySelectorAll('#subjectMultiselect input[type=checkbox]');
+        const chosen = Array.from(multiChecks).filter(c=>c.checked).map(c=>c.value);
+        if(chosen.length) subjectVal = chosen.join(', ');
+        hidden.value = subjectVal;
+      } else {
+        const sel = form.querySelector('select[name="subject"]');
+        if(sel) subjectVal = sel.value;
+      }
+
+      // build params for EmailJS
+      const params = {
+        from_name: form.querySelector('input[name="name"]').value.trim(),
+        from_email: form.querySelector('input[name="email"]').value.trim(),
+        reply_to: form.querySelector('input[name="email"]').value.trim(),
+        company: form.querySelector('input[name="company"]').value.trim(),
+        subject: subjectVal,
+        message: (form.querySelector('textarea[name="message"]').value || '').trim(),
+        page_url: window.location.href
+      };
+
+      const svc = 'service_fvju4ob';
+      const tmpl = 'template_jtmbhdl';
+      if(window.emailjs && typeof window.emailjs.send === 'function'){
+        window.emailjs.send(svc, tmpl, params)
+          .then(function(){
+            btn.textContent = 'Sent!';
+            setTimeout(()=>{ btn.textContent = 'Send'; btn.disabled = false; }, 1200);
+            form.reset();
+            if(document.getElementById('subjectMultiselect')){
+              document.querySelectorAll('#subjectMultiselect input[type=checkbox]').forEach(cb=>cb.checked=false);
+              document.querySelector('#subjectMultiselect .multiselect-placeholder').textContent = 'Choose One or More Topic(s)…';
+            }
+            alert('Thanks — your message has been sent.');
+          })
+          .catch(function(err){
+            console.error('EmailJS error', err);
+            btn.disabled = false;
+            btn.textContent = 'Send';
+            alert('Sorry, there was an issue sending your message. Please try again later.');
+          });
+      } else {
         btn.disabled = false;
-        // gather selected subjects from multiselect or select
-        const hidden = form.querySelector('#subject');
-        let subjectVal = 'General';
-        if(hidden){
-          const multiChecks = document.querySelectorAll('#subjectMultiselect input[type=checkbox]');
-          const chosen = Array.from(multiChecks).filter(c=>c.checked).map(c=>c.value);
-          if(chosen.length) subjectVal = chosen.join(', ');
-          hidden.value = subjectVal;
-        } else {
-          const sel = form.querySelector('select[name="subject"]');
-          if(sel) subjectVal = sel.value;
-        }
-        alert('Thanks — your message was queued (static demo). Subject: ' + subjectVal);
-        form.reset();
-        // reset multiselect placeholder
-        if(document.getElementById('subjectMultiselect')){
-          document.querySelectorAll('#subjectMultiselect input[type=checkbox]').forEach(cb=>cb.checked=false);
-          document.querySelector('#subjectMultiselect .multiselect-placeholder').textContent = 'Choose One or More Topic(s)…';
-        }
-      }, 800);
+        btn.textContent = 'Send';
+        alert('Email service unavailable. Please try again later.');
+      }
     });
   }
 });
