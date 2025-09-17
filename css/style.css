@@ -14,7 +14,7 @@
 .bitcount-grid-double{
 	font-family:"Bitcount Grid Double", system-ui;
 	font-optical-sizing:auto;
-	font-weight:400; /* Double Light 300 */
+	font-weight:300; /* Double Light 300 */
 	font-style:normal;
 	font-variation-settings:
 		"slnt" 0,
