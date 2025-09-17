@@ -23,9 +23,10 @@
     <section class="contact">
   <h2 style="color:var(--accent);text-align:center">Contact Us</h2>
   <form class="contact-form panel" action="https://formspree.io/f/mrbawrkj" method="POST" accept-charset="UTF-8">
-        <input type="email" placeholder="Email" name="email" required />
-        <input type="name" placeholder="Name" name="name" required />
-        <input type="text" placeholder="Company" name="company" />
+        <input type="email" placeholder="Your Email" name="email" required />
+        <input type="text" placeholder="Your First Name" name="first_name" required />
+        <input type="text" placeholder="Your Last Name" name="last_name" required />
+        <input type="text" placeholder="Your Company (if applicable)" name="company" />
   <label for="subject" style="display:block;text-align:left;margin:8px 0;color:var(--nav-link)">Choose One or More Topic(s)</label>
         <!-- Custom multi-select dropdown -->
         <div class="multiselect" id="subjectMultiselect" style="margin-bottom:12px">
@@ -43,10 +44,10 @@
             <label><input type="checkbox" value="Misc" /> Misc</label>
           </div>
         </div>
-  <div class="helper" style="margin-bottom:6px">Click the box to choose one or more topics</div>
+  <!--<div class="helper" style="margin-bottom:6px">Type the body of your email</div>-->
   <!-- hidden input to carry selected subjects for submission -->
   <input type="hidden" name="subject" id="subject" />
-  <input type="hidden" name="_to" value="savannah@isawyersolutions.com" /> -->
+  <input type="hidden" name="_to" value="savannah@isawyersolutions.com" />
   <!--<input type="hidden" name="_to" value="savannahcoker3@gmail.com" /> -->
   <!-- Formspree honeypot field (spam protection) -->
   <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
