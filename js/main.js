@@ -111,13 +111,8 @@ document.addEventListener('DOMContentLoaded', function(){
       checkboxes.forEach(cb=>cb.addEventListener('change', updatePlaceholder));
   updatePlaceholder();
     }
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-      const btn = form.querySelector('button[type=submit]');
-      btn.disabled = true;
-      btn.textContent = 'Sending...';
-
-      // gather selected subjects from multiselect or select
+    form.addEventListener('submit', async function(ev){
+      // ensure hidden subject is populated just before submit
       const hidden = form.querySelector('#subject');
       let subjectVal = 'General';
       if(hidden){
@@ -130,41 +125,32 @@ document.addEventListener('DOMContentLoaded', function(){
         if(sel) subjectVal = sel.value;
       }
 
-      // build params for EmailJS
-      const params = {
-        from_name: form.querySelector('input[name="name"]').value.trim(),
-        from_email: form.querySelector('input[name="email"]').value.trim(),
-        reply_to: form.querySelector('input[name="email"]').value.trim(),
-        company: form.querySelector('input[name="company"]').value.trim(),
-        subject: subjectVal,
-        message: (form.querySelector('textarea[name="message"]').value || '').trim(),
-        page_url: window.location.href
-      };
+      // If using Formspree, submit via fetch and redirect to thanks page
+      const action = (form.getAttribute('action') || '').trim();
+      const isFormspree = action.startsWith('https://formspree.io/f/');
+      if(!isFormspree){
+        return; // allow natural submit for other backends
+      }
 
-      const svc = 'service_fvju4ob';
-      const tmpl = 'template_jtmbhdl';
-      if(window.emailjs && typeof window.emailjs.send === 'function'){
-        window.emailjs.send(svc, tmpl, params)
-          .then(function(){
-            btn.textContent = 'Sent!';
-            setTimeout(()=>{ btn.textContent = 'Send'; btn.disabled = false; }, 1200);
-            form.reset();
-            if(document.getElementById('subjectMultiselect')){
-              document.querySelectorAll('#subjectMultiselect input[type=checkbox]').forEach(cb=>cb.checked=false);
-              document.querySelector('#subjectMultiselect .multiselect-placeholder').textContent = 'Choose One or More Topic(s)…';
-            }
-            alert('Thanks — your message has been sent.');
-          })
-          .catch(function(err){
-            console.error('EmailJS error', err);
-            btn.disabled = false;
-            btn.textContent = 'Send';
-            alert('Sorry, there was an issue sending your message. Please try again later.');
-          });
-      } else {
-        btn.disabled = false;
-        btn.textContent = 'Send';
-        alert('Email service unavailable. Please try again later.');
+      ev.preventDefault();
+      try{
+        const fd = new FormData(form);
+        // Formspree recommends Accept: application/json to get JSON response
+        const res = await fetch(action, {
+          method: 'POST',
+          body: fd,
+          headers: { 'Accept': 'application/json' }
+        });
+        if(res.ok){
+          window.location.href = '/thanks.html';
+        } else {
+          // Try to parse errors for debugging, then fallback
+          try { console.warn('Formspree error', await res.json()); } catch(_) {}
+          form.submit();
+        }
+      } catch(err){
+        console.warn('Formspree submit failed, falling back to native submit', err);
+        form.submit();
       }
     });
   }

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Thanks — iSawyerSolutions</title>
+  <meta name="robots" content="noindex" />
+  <link rel="stylesheet" href="/css/style.css?v=20">
+  <!-- Auto-redirect to Home after a short pause -->
+  <meta http-equiv="refresh" content="8; url=/index.html" />
+</head>
+<body>
+  <nav class="nav">
+    <img class="logo" src="/public/logo.png?v=20250916-3" alt="logo" onclick="location.href='/index.html'" onerror="this.onerror=null;this.src='/public/logo.png?v=20250916-3'" style="display:block"/>
+    <div class="links">
+      <button class="link" data-href="/index.html">Home</button>
+      <button class="link" data-href="/services.html">Services</button>
+      <button class="link" data-href="/industries.html">Industries</button>
+      <button class="link" data-href="/accomplishments.html">Accomplishments</button>
+      <button class="link" data-href="/about.html">About Us</button>
+      <button class="link" data-href="/contact.html">Contact Us</button>
+      <button style="border:1px solid var(--accent);color:var(--accent);padding:.3rem .7rem;border-radius:6px" class="link" data-href="/login.html">Client Login</button>
+    </div>
+  </nav>
+
+  <main style="padding-top:0">
+    <section style="min-height:60vh;display:flex;align-items:center;justify-content:center;padding:40px 16px">
+      <div class="panel" style="max-width:720px;width:100%;text-align:center">
+        <div aria-hidden="true" style="font-size:56px;line-height:1;margin-bottom:12px;color:var(--accent)">✓</div>
+        <h1 style="margin:0 0 8px">Thanks for reaching out</h1>
+        <p class="helper" style="margin:0 0 14px">Your message was sent successfully. We19ll get back to you soon.</p>
+        <div style="margin-top:8px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center">
+          <a class="link" href="/index.html" style="border:1px solid var(--accent);color:var(--accent);padding:.5rem .9rem;border-radius:8px">Return Home</a>
+          <a class="link" href="/contact.html" style="color:var(--nav-link-hover)">Send another message</a>
+        </div>
+        <div class="helper" style="margin-top:14px">You19ll be redirected in a few seconds14or use the links above.</div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/js/main.js?v=15"></script>
+  <script>
+    // JS fallback/override for redirect timing if needed
+    (function(){
+      const ms = 8000; // keep in sync with meta refresh
+      setTimeout(() => { window.location.href = '/index.html'; }, ms);
+    })();
+  </script>
+</body>
+</html>

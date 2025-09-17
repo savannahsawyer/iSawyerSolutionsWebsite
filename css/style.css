@@ -10,13 +10,25 @@
 	--nav-link-hover:#e7f6d1;
 }
 *{box-sizing:border-box}
+/* Bitcount Grid Double font utility */
+.bitcount-grid-double{
+	font-family:"Bitcount Grid Double", system-ui;
+	font-optical-sizing:auto;
+	font-weight:400; /* Double Light 300 */
+	font-style:normal;
+	font-variation-settings:
+		"slnt" 0,
+		"CRSV" 0.5,
+		"ELSH" 0,
+		"ELXP" 0;
+}
 /* Global background: image at ~20% visibility via dark overlay */
 body{
 	margin:0;
 	font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
 	color:var(--text);
 	background-color:var(--bg);
-		background-image:linear-gradient(rgba(10,13,18,0.5), rgba(10,13,18,0.5)), url('/public/blankBackground.png');
+		background-image:linear-gradient(rgba(10,13,18,0.75), rgba(10,13,18,0.75)), url('/public/blankBackground.png');
 	background-position:center center;
 	background-size:cover;
 	background-repeat:no-repeat;
@@ -101,6 +113,11 @@ body.home .hero .content h1, body.home .hero h1{
 	z-index:3!important;
 	color:#e6e6e6!important;
 	text-shadow:0 2px 18px rgba(0,0,0,0.6)!important;
+}
+/* Match homepage headline color to the CTA green */
+body.home .hero .content h1.bitcount-grid-double,
+body.home .hero h1.bitcount-grid-double{
+	color:var(--accent) !important;
 }
 .hero .brand{color:var(--accent);font-weight:900;font-size:3.6rem;margin-bottom:.5rem;display:inline-block;transform:translateY(6vh);transition:transform .28s ease}
 .hero .sub{color:#fff;font-weight:700;font-size:1.6rem;margin-bottom:.75rem;display:inline-block;transform:translateY(6vh);transition:transform .28s ease}

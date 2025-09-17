@@ -22,9 +22,9 @@
   <main style="padding-top:0px">
     <section class="contact">
   <h2 style="color:var(--accent);text-align:center">Contact Us</h2>
-  <form class="contact-form panel">
-        <input type="text" placeholder="Name" name="name" required />
+  <form class="contact-form panel" action="https://formspree.io/f/mrbawrkj" method="POST" accept-charset="UTF-8">
         <input type="email" placeholder="Email" name="email" required />
+        <input type="name" placeholder="Name" name="name" required />
         <input type="text" placeholder="Company" name="company" />
   <label for="subject" style="display:block;text-align:left;margin:8px 0;color:var(--nav-link)">Choose One or More Topic(s)</label>
         <!-- Custom multi-select dropdown -->
@@ -44,17 +44,17 @@
           </div>
         </div>
   <div class="helper" style="margin-bottom:6px">Click the box to choose one or more topics</div>
-        <!-- hidden input to carry selected subjects for submission -->
-        <input type="hidden" name="subject" id="subject" />
+  <!-- hidden input to carry selected subjects for submission -->
+  <input type="hidden" name="subject" id="subject" />
+  <!-- Formspree honeypot field (spam protection) -->
+  <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+  <!-- Optional redirect hint (for non-AJAX submits; we will handle via JS) -->
+  <input type="hidden" name="_next" value="/thanks.html" />
         <textarea name="message" placeholder="Please type your message inquire here." style="min-height:80px"></textarea>
         <button class="send" type="submit">Send</button>
       </form>
     </section>
   </main>
-
-  <!-- EmailJS SDK (contact page only) -->
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-  <script>(function(){ try{ if(window.emailjs){ window.emailjs.init('sVIZofNWuj-GjU3Hj'); } }catch(e){} })();</script>
 
   <script src="/js/main.js?v=15"></script>
 </body>
