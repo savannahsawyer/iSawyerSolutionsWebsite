@@ -263,3 +263,84 @@ body.home .grid{display:none}
 	/* Nudge homepage description down slightly on phones */
 	body.home .hero .desc{transform:translateY(35vh)!important}
 	}
+
+/* Interactive hover/focus styles for key buttons */
+/* Smooth transitions */
+.btn-primary,
+.contact button.send,
+#loginForm button[type="submit"],
+#requestAccountBtn,
+#forgotBtn{
+	transition: transform .18s ease, filter .18s ease, box-shadow .18s ease, outline-color .18s ease;
+}
+
+/* CTA hover/focus: lift, brighten, stronger glow */
+.btn-primary:hover,
+.btn-primary:focus-visible{
+	transform: translateY(-1px) scale(1.05);
+	filter: brightness(1.08);
+	box-shadow: 0 10px 28px rgba(var(--accent-rgb),0.32) !important;
+	outline: 2px solid rgba(var(--accent-rgb),0.45);
+	outline-offset: 2px;
+}
+
+/* Contact Send hover/focus */
+.contact button.send:hover,
+.contact button.send:focus-visible{
+	transform: translateY(-1px) scale(1.04);
+	filter: brightness(1.07);
+	box-shadow: 0 8px 24px rgba(var(--accent-rgb),0.28);
+	outline: 2px solid rgba(var(--accent-rgb),0.45);
+	outline-offset: 2px;
+}
+
+/* Login buttons hover/focus */
+#loginForm button[type="submit"]:hover,
+#loginForm button[type="submit"]:focus-visible,
+#requestAccountBtn:hover,
+#requestAccountBtn:focus-visible{
+	transform: translateY(-1px) scale(1.04);
+	filter: brightness(1.07);
+	box-shadow: 0 8px 22px rgba(var(--accent-rgb),0.26);
+	outline: 2px solid rgba(var(--accent-rgb),0.45);
+	outline-offset: 2px;
+}
+
+/* Forgot password: subtle lift + underline for clarity */
+#forgotBtn{
+	background: transparent !important;
+	border: none !important;
+}
+#forgotBtn:hover,
+#forgotBtn:focus-visible{
+	transform: translateY(-1px) scale(1.02);
+	text-decoration: underline;
+	filter: brightness(1.1);
+}
+
+/* Active press feedback */
+.btn-primary:active,
+.contact button.send:active,
+#loginForm button[type="submit"]:active,
+#requestAccountBtn:active{
+	transform: translateY(0) scale(0.99);
+	filter: brightness(0.98);
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce){
+	.btn-primary,
+	.contact button.send,
+	#loginForm button[type="submit"],
+	#requestAccountBtn,
+	#forgotBtn{
+		transition: none !important;
+	}
+	.btn-primary:hover, .btn-primary:focus-visible,
+	.contact button.send:hover, .contact button.send:focus-visible,
+	#loginForm button[type="submit"]:hover, #loginForm button[type="submit"]:focus-visible,
+	#requestAccountBtn:hover, #requestAccountBtn:focus-visible,
+	#forgotBtn:hover, #forgotBtn:focus-visible{
+		transform: none !important;
+	}
+}
