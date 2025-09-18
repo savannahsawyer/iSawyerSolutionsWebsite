@@ -22,42 +22,67 @@
   <main style="padding-top:0px">
     <section class="contact">
   <h2 style="color:var(--accent);text-align:center">Contact Us</h2>
-  <form class="contact-form panel" action="https://formspree.io/f/mrbawrkj" method="POST" accept-charset="UTF-8">
-        <input type="email" placeholder="Your Email" name="email" required />
-        <input type="text" placeholder="Your First Name" name="first_name" required />
-        <input type="text" placeholder="Your Last Name" name="last_name" required />
-        <input type="text" placeholder="Your Company (if applicable)" name="company" />
-  <label for="subject" style="display:block;text-align:left;margin:8px 0;color:var(--nav-link)">Choose One or More Topic(s)</label>
-        <!-- Custom multi-select dropdown -->
-        <div class="multiselect" id="subjectMultiselect" style="margin-bottom:12px">
-          <button type="button" class="multiselect-toggle" aria-haspopup="listbox" aria-expanded="false">
-            <div style="display:flex;align-items:center">
-              <span class="multiselect-placeholder">Choose One or More Topic(s)…</span>
-            </div>
-            <span class="multiselect-arrow">▾</span>
-          </button>
-          <div class="multiselect-options" role="listbox" aria-label="Subject options">
-            <label><input type="checkbox" value="Become a Client" /> Become a Client</label>
-            <label><input type="checkbox" value="Request A Client Account" /> Request A Client Account</label>
-            <label><input type="checkbox" value="Book a Consultation for a Free Quote" /> Book a Consultation for a Free Quote</label>
-            <label><input type="checkbox" value="Services" /> Services</label>
-            <label><input type="checkbox" value="Misc" /> Misc</label>
-          </div>
-        </div>
-  <!--<div class="helper" style="margin-bottom:6px">Type the body of your email</div>-->
-  <!-- hidden input to carry selected subjects for submission -->
+  <!-- <form class="contact-form panel" action="https://api.web3forms.com/submit" method="POST" accept-charset="UTF-8"> -->
+  <form
+  class="contact-form panel"
+  action="https://contact.isawyersolutions.com"
+  method="POST"
+  accept-charset="UTF-8">
+    <!-- Your Web3Forms Access Key -->
+  <input type="hidden" name="access_key" value="cc042415-b6fd-4301-8632-fffe9f5843fe" />
+
+  <input type="email" placeholder="Your Email" name="email" required />
+  <input type="text" placeholder="Your First Name" name="first_name" required />
+  <input type="text" placeholder="Your Last Name" name="last_name" required />
+  <input type="text" placeholder="Your Company (if applicable)" name="company" />
+
+  <label style="display:block;text-align:left;margin:8px 0;color:var(--nav-link)">
+    Choose One or More Topic(s)
+  </label>
+
+  <!-- Custom multi-select dropdown UI -->
+  <div class="multiselect" id="subjectMultiselect" style="margin-bottom:12px">
+    <button type="button" class="multiselect-toggle" aria-haspopup="listbox" aria-expanded="false">
+      <div style="display:flex;align-items:center">
+        <span class="multiselect-placeholder">Choose One or More Topic(s)…</span>
+      </div>
+      <span class="multiselect-arrow">▾</span>
+    </button>
+    <div class="multiselect-options" role="listbox" aria-label="Subject options">
+      <label><input type="checkbox" value="Become a Client" /> Become a Client</label>
+      <label><input type="checkbox" value="Request A Client Account" /> Request A Client Account</label>
+      <label><input type="checkbox" value="Book a Consultation for a Free Quote" /> Book a Consultation for a Free Quote</label>
+      <label><input type="checkbox" value="Services" /> Services</label>
+      <label><input type="checkbox" value="Misc" /> Misc</label>
+    </div>
+  </div>
+
+  <!-- Hidden field that actually submits the selected values -->
   <input type="hidden" name="subject" id="subject" />
-  <input type="hidden" name="_to" value="savannah@isawyersolutions.com" />
-  <!--<input type="hidden" name="_to" value="savannahcoker3@gmail.com" /> -->
-  <!-- Formspree honeypot field (spam protection) -->
-  <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
-  <!-- Optional redirect hint (for non-AJAX submits; we will handle via JS) -->
-  <input type="hidden" name="_next" value="/thanks.html" />
-        <textarea name="message" placeholder="Please type your message inquire here." style="min-height:80px"></textarea>
-        <button class="send" type="submit">Send</button>
-      </form>
+
+  <textarea name="message" placeholder="Please type your message here." style="min-height:80px"></textarea>
+
+  <!-- Redirect after success -->
+  <input type="hidden" name="redirect" value="https://isawyersolutions.com/thanks.html" />
+
+  <!-- Honeypot spam field -->
+  <input type="checkbox" name="botcheck" class="hidden" style="display:none" />
+
+  <button class="send" type="submit">Send</button>
+</form>
+
     </section>
   </main>
+  <script>
+document.querySelector('.contact-form').addEventListener('submit', function (e) {
+  const selected = Array.from(
+    document.querySelectorAll('#subjectMultiselect input[type="checkbox"]:checked')
+  ).map(cb => cb.value);
+
+  document.getElementById('subject').value = selected.join(', ');
+});
+</script>
+
 
   <script src="/js/main.js?v=15"></script>
 </body>
