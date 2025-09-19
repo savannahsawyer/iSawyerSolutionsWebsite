@@ -104,7 +104,7 @@ body.home .hero h1{transform:translateY(-12vh)}
 @media (min-width:900px){ body.home .hero h1{transform:translateY(-18vh)} }
 /* Force H1 visible on the homepage: remove the large negative translate and give a safe top margin */
 body.home .hero h1{transform:none!important;margin-top:18px!important}
-@media (max-width:520px){ body.home .hero h1{transform:none!important;margin-top:10px!important;font-size:1.4rem!important} }
+@media (max-width:520px){ body.home .hero h1{transform:none!important;margin-top:10px!important;font-size:1.4rem!important;margin-bottom:0.5rem!important} }
 /* Strong override to ensure headline is visible and on top of the video */
 body.home .hero .content h1, body.home .hero h1{
 	transform:none!important;
@@ -123,7 +123,7 @@ body.home .hero h1.bitcount-grid-double{
 body.home .hero h1.bitcount-grid-double{ font-size:3rem !important; line-height:1.06; }
 @media (min-width:900px){ body.home .hero h1.bitcount-grid-double{ font-size:2.8rem !important; } }
 @media (max-width:520px){ body.home .hero h1.bitcount-grid-double{ font-size:1.9rem !important; } }
-.hero .brand{color:var(--accent);font-weight:900;font-size:3.6rem;margin-bottom:.5rem;display:inline-block;transform:translateY(6vh);transition:transform .28s ease}
+/* .hero .brand{color:var(--accent);font-weight:900;font-size:3.6rem;margin-bottom:.5rem;display:inline-block;transform:translateY(6vh);transition:transform .28s ease} */
 .hero .sub{color:#fff;font-weight:700;font-size:1.6rem;margin-bottom:.75rem;display:inline-block;transform:translateY(6vh);transition:transform .28s ease}
 .hero .desc{color:var(--text);font-size:1.2rem;max-width:920px;margin-bottom:1rem;display:inline-block;transform:translateY(6vh);transition:transform .28s ease}
 .hero .cta{display:flex;gap:12px;transform:translateY(6vh);transition:transform .28s ease}
