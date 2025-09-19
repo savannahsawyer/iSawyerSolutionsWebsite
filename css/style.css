@@ -104,11 +104,11 @@ body.home .hero h1{transform:translateY(-12vh)}
 @media (min-width:900px){ body.home .hero h1{transform:translateY(-18vh)} }
 /* Force H1 visible on the homepage: remove the large negative translate and give a safe top margin */
 body.home .hero h1{transform:none!important;margin-top:18px!important}
-@media (max-width:520px){ body.home .hero h1{transform:none!important;margin-top:10px!important;font-size:1.4rem!important;margin-bottom:0.5rem!important} }
+@media (max-width:520px){ body.home .hero h1{transform:none!important;margin-top:10px!important;font-size:1.4rem!important;margin-bottom:0rem!important} }
 /* Strong override to ensure headline is visible and on top of the video */
 body.home .hero .content h1, body.home .hero h1{
 	transform:none!important;
-	margin-top:18px!important;
+	margin-top:0px!important;
 	position:relative!important;
 	z-index:3!important;
 	color:#e6e6e6!important;
